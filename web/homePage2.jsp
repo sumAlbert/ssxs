@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>wy</title>
+    <title>wy2</title>
 </head>
 <style type="text/css">
     body{
@@ -30,8 +30,9 @@
     .point_white{
         height: 1px;
         width: 1px;
-        background: hsla(0,0%,100%,.03);
+        background: hsla(0,0%,100%,.05);
         /*background: white;*/
+        /*background: transparent;*/
     }
     .point_transparent{
         height: 1px;
@@ -60,12 +61,12 @@
 </style>
 <body>
 <div class="main" id="main">
-    <img src="1.jpg">
+    <img src="2.jpg">
     <div class="points" id="points">
         <%for(int n=0;n<size;n++){%>
         <div class="points_line">
             <%for(int m=0;m<size;m++){%>
-                <div class="<%=result.get(size*n+m)%>"></div>
+            <div class="<%=result.get(size*n+m)%>"></div>
             <%}%>
         </div>
         <%}%>
