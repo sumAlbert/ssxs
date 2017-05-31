@@ -7,13 +7,7 @@
 <struts>
     <package name="default" extends="struts-default">
         <action name="index" class="shushuoxinsheng.startup.action.StartupAction">
-            <result name="success">/homePage.jsp</result>
-        </action>
-        <action name="index2" class="shushuoxinsheng.startup.action.StartupAction2">
-            <result name="success">/homePage2.jsp</result>
-        </action>
-        <action name="index3" class="shushuoxinsheng.startup.action.StartupAction3">
-            <result name="success">/homePage3.jsp</result>
+            <result name="success">workspace1.jsp</result>
         </action>
     </package>
 </struts>
