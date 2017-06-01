@@ -33,17 +33,39 @@ public class ExcelHandler {
             exception.printStackTrace();
         }
         List<String> list=new ArrayList<String>();
+        Object object;
         XSSFSheet xssfSheet;
         XSSFRow xssfRow;
         XSSFCell xssfCell;
         xssfSheet=xssfWorkbook.getSheetAt(0);
-        for(int i=xssfSheet.getFirstRowNum();i<=xssfSheet.getLastRowNum();i++){
-            xssfRow=xssfSheet.getRow(i);
-            for(int j=xssfRow.getFirstCellNum();j<xssfRow.getLastCellNum();j++){
-                xssfCell=xssfRow.getCell(j);
-                list.add(xssfCell.getCellTypeEnum().toString());
+        if(xssfSheet!=null) {
+            for (int i = 1; i <= xssfSheet.getLastRowNum(); i++) {
+                xssfRow = xssfSheet.getRow(i);
+                if (xssfRow != null) {
+                    for (int j = xssfRow.getFirstCellNum(); j < xssfRow.getLastCellNum(); j++) {
+                        xssfCell = xssfRow.getCell(j);
+                        if(xssfCell!=null) {
+                            switch (xssfCell.getCellTypeEnum()) {
+                                case STRING:
+                                    object = xssfCell.getStringCellValue();
+                                    list.add(String.valueOf(object) + "string");
+                                    break;
+                                case NUMERIC:
+                                    object = xssfCell.getNumericCellValue();
+                                    list.add(String.valueOf(object) + "numeric");
+                                    break;
+                                default:
+                                    list.add(xssfCell.getCellTypeEnum().toString());
+                                    break;
+                            }
+                        }
+                        else{
+                            list.add("空白");
+                        }
+                    }
+                }
             }
         }
-        System.out.println("123");
+        System.out.print("");
     }
 }
