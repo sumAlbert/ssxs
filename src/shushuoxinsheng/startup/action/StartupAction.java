@@ -2,6 +2,7 @@ package shushuoxinsheng.startup.action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import excelhandler.ExcelHandler;
 import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class StartupAction extends ActionSupport{
 
     public String execute() throws Exception {
         // TODO Auto-generated method stub
+        ExcelHandler eh=new ExcelHandler();
         return SUCCESS;
     }
 }
