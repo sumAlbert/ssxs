@@ -13,7 +13,8 @@ public class Item {
 
     public Item(){
         super();
-        itemID= HashNum.getHashNum(8);
+        HashNum hashNum=new HashNum();
+        itemID= hashNum.getHashNum(8);
         itemID="It"+itemID;
     }
 

@@ -216,7 +216,8 @@ $(document).ready(function(){
                 dataType : "json",//设置返回数据的格式
 				success: function(data){
                     var jsondata=$.parseJSON(data);
-                    alert(jsondata.name);
+                    alert("./download/"+jsondata.name);
+                    window.location.href="./download/"+jsondata.name;
 				},
 				error: function(){
 					alert("error");
