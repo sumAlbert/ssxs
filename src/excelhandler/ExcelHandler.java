@@ -3,6 +3,8 @@ package excelhandler;
 
 
 import entity.Student;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -31,10 +33,14 @@ public class ExcelHandler {
             exception.printStackTrace();
         }
         List<String> list=new ArrayList<String>();
+        CellStyle defaultCellStyle;
         Object object;
         XSSFSheet xssfSheet;
         XSSFRow xssfRow;
         XSSFCell xssfCell;
+//        defaultCellStyle=xssfWorkbook.createCellStyle();
+//        DataFormat dataFormat=xssfWorkbook.createDataFormat();
+//        defaultCellStyle.setDataFormat(dataFormat.getFormat("@"));
         xssfSheet=xssfWorkbook.getSheetAt(0);
         if(xssfSheet!=null) {
             for (int i = 1; i <= xssfSheet.getLastRowNum(); i++) {

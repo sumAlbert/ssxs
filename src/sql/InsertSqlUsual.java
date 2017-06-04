@@ -13,9 +13,6 @@ public class InsertSqlUsual {
     private ResultSet resultSet;
     public InsertSqlUsual(){
         try{
-//            Driver driver=new com.mysql.jdbc.Driver();
-//            DriverManager.registerDriver(driver);
-//            connection=DriverManager.getConnection(DB_URL,USER,PASS);
             connection=new BaseConnection("teambox1").getConnection();
             Statement statement=connection.createStatement();
             String sql="select * from users";

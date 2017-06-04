@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: dell2
@@ -11,6 +12,6 @@
     <title>述说新生</title>
 </head>
 <body>
-
+    <a href="./css/<s:property value="name"></s:property> ">123</a>
 </body>
 </html>
