@@ -5,9 +5,15 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <package name="default" extends="struts-default">
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <package name="default" extends="json-default">
         <action name="index" class="shushuoxinsheng.startup.action.StartupAction">
             <result name="success">workspace1.jsp</result>
+        </action>
+        <action name="excelCreater" class="excelhandler.excelaction.ExcelCreateAction" method="create">
+            <result name="true" type="json">
+                <param name="root">result</param>
+            </result>
         </action>
     </package>
 </struts>
