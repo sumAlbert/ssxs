@@ -15,5 +15,8 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <action name="excelReceive" class="excelhandler.excelaction.ExcelReceiveAction">
+            <result name="success">workspace2.jsp</result>
+        </action>
     </package>
 </struts>

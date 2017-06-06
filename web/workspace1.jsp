@@ -159,14 +159,14 @@
                     <div class="update-label update-label-active">待上传</div>
                     <div class="update-label update-label-inactive">已上传</div>
                 </div>
-                <div class="update-content update-wait">
+                <form class="update-content update-wait" method="POST" enctype="multipart/form-data" id="excel_table" action="excelReceive.action">
                     <div class="update-content-info">华师大15级各专业</br>最多出生月份
                     </div>
                     <div class="update-buttons">
                         <div class="update-button" id="downloadExcel">下载表格</div>
-                        <div class="update-button">上传数据</div>
+                        <div class="update-button"><input type="file" name="excel" id="excel_input" onchange="excelSubmit()">上传数据</div>
                     </div>
-                </div>
+                </form>
                 <div class="update-content update-finish"></div>
             </div>
             <div class="save-local work-content-item"></div>
