@@ -238,7 +238,7 @@ $(document).ready(function(){
 			}
 });
 function excelSubmit(){
-	if(getFileName()==".xls"||getFileName()==".xlsx"){
+	if(getFileName()=="xls"||getFileName()=="xlsx"){
         var excel_form=document.getElementById("excel_table");
         excel_form.submit();
 	}

@@ -1,20 +1,24 @@
 package entity;
 
+import com.opensymphony.xwork2.ActionContext;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dell2 on 2017/6/1.
  */
 public class Student {
     private List<String> attrList=new ArrayList<String>();
+    private Map<String,String> initMap;
     private boolean vaild;
+
+    /**Excel中读取到的属性*/
     private String studentID;
-    private String schoolID;
-    private String majorID;
     private String dataForEnter;
     private String birthday;
-    private String subject;
     private String birthPlace;
     private String name;
     private String everName;
@@ -30,86 +34,122 @@ public class Student {
     private boolean disabled;
     private String tel;
     private String email;
-    private String kind;
-    public Student(List<String> attrList){
-        for(int i=0;i<attrList.size();i++){
-            switch(i){
-                case 0:
-                    this.setStudentID((String)attrList.get(0));
+    private String schoolName;
+    private String majorName;
+    private String majorKind;
+    private String batch;
+    //数据库元素
+    private String schoolID;
+    private String majorID;
+
+    public Student(){
+        super();
+    }
+    public Student(Map<String,String> initMap){
+        this.initMap=initMap;
+        Iterator iterator=initMap.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<String,String> entry=(Map.Entry<String,String>)iterator.next();
+            String key=entry.getKey();
+            String value=entry.getValue();
+            switch (key){
+                case "studentID":
+                    this.setStudentID(value);
                     break;
-                case 1:
-                    this.setSchoolID((String)attrList.get(1));
+                case "schoolName":
+                    this.setSchoolName(value);
                     break;
-                case 2:
-                    this.setDataForEnter((String)attrList.get(2));
+                case "majorName":
+                    this.setMajorName(value);
                     break;
-                case 3:
-                    this.setBirthPlace((String)attrList.get(3));
+                case "dataForEnter":
+                    this.setDataForEnter(value);
                     break;
-                case 4:
-                    this.setSubject((String)attrList.get(4));
+                case "birthPlace":
+                    this.setBirthPlace(value);
                     break;
-                case 5:
-                    this.setBirthday((String)attrList.get(5));
+                case "majorKind":
+                    this.setMajorKind(value);
                     break;
-                case 6:
-                    this.setName((String)attrList.get(6));
+                case "birthday":
+                    this.setBirthday(value);
                     break;
-                case 7:
-                    this.setEverName((String)attrList.get(7));
+                case "name":
+                    this.setName(value);
                     break;
-                case 8:
-                    this.setGender((String)attrList.get(8));
+                case "everName":
+                    this.setEverName(value);
                     break;
-                case 9:
-                    this.setIDNumber((String)attrList.get(9));
+                case "gender":
+                    this.setGender(value);
                     break;
-                case 10:
-                    this.setNation((String)attrList.get(10));
+                case "IDNumber":
+                    this.setIDNumber(value);
                     break;
-                case 11:
-                    this.setPolitical((String)attrList.get(11));
+                case "nation":
+                    this.setNation(value);
                     break;
-                case 12:
-                    this.setReligion((String)attrList.get(12));
+                case "political":
+                    this.setPolitical(value);
                     break;
-                case 13:
-                    this.setScores((String)attrList.get(13));
+                case "religion":
+                    this.setReligion(value);
                     break;
-                case 14:
-                    this.setBloodType((String)attrList.get(14));
+                case "scores":
+                    this.setScores(value);
                     break;
-                case 15:
-                    this.setHeight((String)attrList.get(15));
+                case "bloodType":
+                    this.setBloodType(value);
                     break;
-                case 16:
-                    if(((String)attrList.get(16)).equals("是"))
+                case "height":
+                    this.setHeight(value);
+                    break;
+                case "onlyChild":
+                    if(value.equals("是"))
                         this.setOnlyChild(true);
                     else
                         this.setOnlyChild(false);
                     break;
-                case 17:
-                    if(((String)attrList.get(17)).equals("是"))
+                case "disabled":
+                    if(value.equals("是"))
                         this.setDisabled(true);
                     else
                         this.setDisabled(false);
                     break;
-                case 18:
-                    this.setTel((String)attrList.get(18));
+                case "tel":
+                    this.setTel(value);
                     break;
-                case 19:
-                    this.setEmail((String)attrList.get(19));
+                case "email":
+                    this.setEmail(value);
                     break;
-                case 20:
-                    this.setKind((String)attrList.get(20));
+                case "batch":
+                    this.setBatch(value);
+                    break;
+                case "schoolID":
+                    this.setStudentID(value);
+                    break;
+                case "majorID":
+                    this.setMajorID(value);
+                    break;
                 default:
+                    System.out.println(value);
                     break;
             }
         }
     }
 
-    public void setKind(String kind){
-        this.kind=kind;
+
+    public void setBatch(String batch){
+        this.batch=batch;
+    }
+    public void setMajorKind(String majorKind){
+        this.majorKind=majorKind;
+    }
+    public void setMajorName(String majorName){
+        this.majorName=majorName;
+    }
+    public void setSchoolName(String schoolName){
+        this.schoolName=schoolName;
     }
     public void setBirthday(String birthPlace){
         this.birthday=birthPlace;
@@ -131,9 +171,6 @@ public class Student {
     }
     public void setDataForEnter(String dataForEnter){
         this.dataForEnter=dataForEnter;
-    }
-    public void setSubject(String subject){
-        this.subject=subject;
     }
     public void setBirthPlace(String birthPlace)
     {
@@ -196,8 +233,17 @@ public class Student {
         this.email=email;
     }
 
-    public String getKind(){
-        return kind;
+    public String getBatch(){
+        return this.batch;
+    }
+    public String getMajorKind(){
+        return this.majorKind;
+    }
+    public String getMajorName(){
+        return this.majorName;
+    }
+    public String getSchoolName(){
+        return this.schoolName;
     }
     public String getBirthday(){return this.birthday;}
     public String getStudentID()
@@ -215,10 +261,6 @@ public class Student {
     public String getDataForEnter()
     {
         return this.dataForEnter;
-    }
-    public String getSubject()
-    {
-        return this.subject;
     }
     public String getBirthPlace()
     {

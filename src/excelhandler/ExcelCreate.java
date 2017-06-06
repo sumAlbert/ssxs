@@ -33,20 +33,6 @@ public class ExcelCreate {
             xssfSheet=xssfWorkbook.createSheet("sheet1");
             setStyle();
             setColumnHeader();
-//            CellStyle cellStyle = xssfWorkbook.createCellStyle();
-//            DataFormat format = xssfWorkbook.createDataFormat();
-//            cellStyle.setDataFormat(format.getFormat("@"));
-
-//            xssfSheet.setColumnWidth(0,3000);
-//            xssfSheet.setDefaultColumnStyle(0, cellStyle);
-//            xssfSheet.setColumnWidth(1,3000);
-//            xssfSheet.setDefaultColumnStyle(1, cellStyle);
-
-//            XSSFDataValidationConstraint constraint =new XSSFDataValidationConstraint(strings);
-//            CellRangeAddressList regions = new CellRangeAddressList(3, 30000, 4, 6);
-//            DataValidationHelper help = new XSSFDataValidationHelper((XSSFSheet)xssfSheet);
-//            DataValidation data_validation_list = help.createValidation(constraint,regions);
-//            xssfSheet.addValidationData(data_validation_list);
             String savePath=getServletContext().getRealPath("/download");
             name= URLDecoder.decode(name,"utf-8");
             fileOutputStream=new FileOutputStream(savePath+"/"+name);

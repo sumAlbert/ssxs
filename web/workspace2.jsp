@@ -12,6 +12,10 @@
     <title>ssxs</title>
 </head>
 <body>
-
+<div id="pre_kind_info"><s:property value="workspace2Kind"></s:property></div>
 </body>
+<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="./js/workspace2.js"></script>
+<script>
+</script>
 </html>

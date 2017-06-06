@@ -164,7 +164,7 @@
                     </div>
                     <div class="update-buttons">
                         <div class="update-button" id="downloadExcel">下载表格</div>
-                        <div class="update-button"><input type="file" name="excel" id="excel_input" onchange="excelSubmit()">上传数据</div>
+                        <div class="update-button"><input type="file" name="excel_input" id="excel_input" onchange="excelSubmit()">上传数据</div>
                     </div>
                 </form>
                 <div class="update-content update-finish"></div>

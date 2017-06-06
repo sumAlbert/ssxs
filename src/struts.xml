@@ -18,5 +18,10 @@
         <action name="excelReceive" class="excelhandler.excelaction.ExcelReceiveAction">
             <result name="success">workspace2.jsp</result>
         </action>
+        <action name="excelEnterSql" class="excelhandler.excelaction.ExcelReceiveAction" method="enterSql">
+            <result name="true" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
     </package>
 </struts>
