@@ -7,8 +7,10 @@ import entity.Item;
 import entity.Major;
 import entity.Student;
 import entity.User;
+import entity.school.action.SchoolHandler;
+import entity.student.action.StudentHandler;
 import excelhandler.excelentity.ExcelColumnNameArr;
-import excelhandler.excelsql.CreateTableSql;
+
 import hash.HashNum;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormat;
@@ -82,7 +84,7 @@ public class ExcelHandler {
         if(xssfSheet!=null) {
             for (int i = 1; i <= xssfSheet.getLastRowNum(); i++) {
                 xssfRow = xssfSheet.getRow(i);
-                map.clear();
+                map=new HashMap<String,String>();
                 if (xssfRow != null) {
                     String tempMajorKind="";
                     String tempMajorName="";
@@ -152,7 +154,8 @@ public class ExcelHandler {
             }
         }
         /*导入数据库*/
-        insertSchInfo2db();
+        insertSchInfo2db("sID"+schoolId,itemID);
+        insertStudents2db(students);
     }
 
     public String C2E(String str){
@@ -162,9 +165,21 @@ public class ExcelHandler {
         return result;
     }
 
-    public void insertSchInfo2db(){
+    public void insertSchInfo2db(String schoolID,String itemID){
         String schoolName="华东师范大学";
         String schoolKind="985";
         String schoolProvince="上海";
+        SchoolHandler schoolHandler=new SchoolHandler();
+        schoolHandler.setSchoolID(schoolID);
+        schoolHandler.setSchoolKind(schoolKind);
+        schoolHandler.setSchoolName(schoolName);
+        schoolHandler.setSchoolProvince(schoolProvince);
+        schoolHandler.setItemID(itemID);
+        schoolHandler.insert();
+    }
+    public void insertStudents2db(List<Student> students){
+        StudentHandler studentHandler=new StudentHandler();
+        studentHandler.setStudents(students);
+        studentHandler.studentsIntoSql();
     }
 }

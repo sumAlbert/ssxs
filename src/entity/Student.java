@@ -147,6 +147,7 @@ public class Student {
                     break;
             }
         }
+        this.initMap.put("stuID",stuID);
     }
 
     public void setInitMap(Map<String,String> initMap){
