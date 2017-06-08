@@ -3,10 +3,12 @@ package excelhandler;
 
 
 import com.opensymphony.xwork2.ActionContext;
+import entity.Item;
 import entity.Major;
 import entity.Student;
 import entity.User;
 import excelhandler.excelentity.ExcelColumnNameArr;
+import excelhandler.excelsql.CreateTableSql;
 import hash.HashNum;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormat;
@@ -38,7 +40,8 @@ public class ExcelHandler {
         /*读取excel并得到student实体*/
         ActionContext ac=ActionContext.getContext();
         Map session=ac.getSession();
-        String schoolId=((User)session.get("userInfo")).getItems().get(0).getItemID().substring(2);
+        String schoolId=((Item)session.get("itemInfo")).getItemID().substring(3);
+        String itemID=((Item)session.get("itemInfo")).getItemID();
         this.path=path;
         try{
             InputStream is=new FileInputStream(path);
@@ -130,7 +133,7 @@ public class ExcelHandler {
                              else{
                                  String oldMajorID=existMajorKindMap.get(tempMajorKind);
                                  if(oldMajorID==null){
-                                     String majorID="mID"+hashNum.getHashNum(8);
+                                     String majorID="mID"+hashNum.getHashNum(10);
                                      existMajorKindMap.put(tempMajorKind,majorID);
                                      majorIDResult=majorID;
                                  }
@@ -140,6 +143,7 @@ public class ExcelHandler {
                              }
                              map.put("majorID",majorIDResult);
                              map.put("schoolID","sID"+schoolId);
+                             map.put("itemID",itemID);
                         }
                     }
                 }
@@ -148,6 +152,7 @@ public class ExcelHandler {
             }
         }
         /*导入数据库*/
+        insertSchInfo2db();
     }
 
     public String C2E(String str){
@@ -155,5 +160,11 @@ public class ExcelHandler {
         ExcelColumnNameArr excelColumnNameArr=new ExcelColumnNameArr();
         result=excelColumnNameArr.getC2E().get(str);
         return result;
+    }
+
+    public void insertSchInfo2db(){
+        String schoolName="华东师范大学";
+        String schoolKind="985";
+        String schoolProvince="上海";
     }
 }

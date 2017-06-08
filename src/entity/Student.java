@@ -1,6 +1,7 @@
 package entity;
 
 import com.opensymphony.xwork2.ActionContext;
+import hash.HashNum;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,11 +42,15 @@ public class Student {
     //数据库元素
     private String schoolID;
     private String majorID;
+    private String stuID;
+    private String itemID;
 
     public Student(){
         super();
     }
     public Student(Map<String,String> initMap){
+        HashNum hashNum=new HashNum();
+        stuID="stu"+hashNum.getHashNum(10);
         this.initMap=initMap;
         Iterator iterator=initMap.entrySet().iterator();
         while(iterator.hasNext()){
@@ -126,10 +131,16 @@ public class Student {
                     this.setBatch(value);
                     break;
                 case "schoolID":
-                    this.setStudentID(value);
+                    this.setSchoolID(value);
                     break;
                 case "majorID":
                     this.setMajorID(value);
+                    break;
+                case "stuID":
+                    this.setStuID(value);
+                    break;
+                case "itemID":
+                    this.setItemID(value);
                     break;
                 default:
                     System.out.println(value);
@@ -138,7 +149,12 @@ public class Student {
         }
     }
 
-
+    public void setInitMap(Map<String,String> initMap){
+        this.initMap=initMap;
+    }
+    public void setItemID(String itemID){
+        this.itemID=itemID;
+    }
     public void setBatch(String batch){
         this.batch=batch;
     }
@@ -232,6 +248,9 @@ public class Student {
     {
         this.email=email;
     }
+    public void setStuID(String stuID){
+        this.stuID=stuID;
+    }
 
     public String getBatch(){
         return this.batch;
@@ -322,4 +341,13 @@ public class Student {
     }
     public boolean getVaild(){return this.vaild;}
     public List<String> getAttrList(){return this.attrList;}
+    public String getStuID(){
+        return this.stuID;
+    }
+    public String getItemID(){
+        return this.itemID;
+    }
+    public Map<String,String> getInitMap(){
+        return this.initMap;
+    }
 }

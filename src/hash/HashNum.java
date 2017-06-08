@@ -8,10 +8,9 @@ public class HashNum {
         String result;
         String randomNum;
         if(num>5){
-            randomNum=String.valueOf(10+(int)Math.floor(Math.random()*90));
+            randomNum=String.valueOf(10000+(int)Math.floor(Math.random()*90000));
             String timeMillis=String.valueOf(System.currentTimeMillis());
-            String randomTime=timeMillis.substring(timeMillis.length()-num-3);
-            randomTime=randomTime.substring(0,timeMillis.length()-num+1);
+            String randomTime=timeMillis.substring(timeMillis.length()-num+5);
             result=randomTime+randomNum;
         }
         else{

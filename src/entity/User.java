@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by dell2 on 2017/6/4.
  */
 public class User {
+    private String userID;
     private String email;
     private String pw;
     private ArrayList<Item> items;
@@ -13,8 +14,8 @@ public class User {
     /**构造函数*/
     public User(){
         super();
-        email="123456@qq.com";
-        pw="123123";
+        email="";
+        pw="";
         items=new ArrayList<>();
     }
     /**get函数*/
@@ -27,7 +28,13 @@ public class User {
     public String getPw(){
         return this.pw;
     }
+    public String getUserID(){
+        return this.userID;
+    }
     /**set函数*/
+    public void setUserID(String userID){
+        this.userID=userID;
+    }
     public void setEmail(String email){
         this.email=email;
     }
@@ -43,4 +50,5 @@ public class User {
         items.add(item);
         return true;
     }
+
 }
