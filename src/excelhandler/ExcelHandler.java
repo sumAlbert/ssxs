@@ -126,7 +126,7 @@ public class ExcelHandler {
                             String majorIDResult="";
                              HashMap<String,String> existMajorKindMap=majorMap.get(tempMajorName);
                              if(existMajorKindMap==null){
-                                String majorID="mID"+hashNum.getHashNum(8);
+                                String majorID="mID"+hashNum.getHashNum(10);
                                 HashMap<String,String> secondHashMap=new HashMap<String,String>();
                                  secondHashMap.put(tempMajorKind,majorID);
                                 majorMap.put(tempMajorName,secondHashMap);

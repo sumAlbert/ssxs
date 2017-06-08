@@ -156,6 +156,8 @@ public class StudentHandler {
                             values+="'"+value+"',";
                             break;
                         case "majorID":
+                            keys+="majorID,";
+                            values+="'"+value+"',";
                             major.setMajorId(value);
                             break;
                         case "stuID":
