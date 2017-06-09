@@ -4,6 +4,7 @@ package entity;
  * Created by dell2 on 2017/6/6.
  */
 public class Major {
+    private String schoolID;
     private String majorId;
     private String majorKind;
     private String majorName;
@@ -34,7 +35,13 @@ public class Major {
     public void setMajorName(String majorName){
         this.majorName=majorName;
     }
+    public void setSchoolID(String schoolID){
+        this.schoolID=schoolID;
+    }
 
+    public String getSchoolID(){
+        return this.schoolID;
+    }
     public String getMajorId(){
         return majorId;
     }

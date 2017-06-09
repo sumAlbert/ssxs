@@ -4,14 +4,13 @@ import entity.Item;
 import entity.Major;
 import entity.Student;
 import entity.User;
+import entity.major.action.MajorHandler;
 import sql.BaseConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by dell2 on 2017/6/7.
@@ -19,7 +18,8 @@ import java.util.Map;
 public class StudentHandler {
     private Connection connection;
     private List<Student> students;
-    private List<Major> majors;
+    private List<Major> majors=new ArrayList<Major>();
+    private Set<String> majorIDs=new HashSet<String>();
 
     public StudentHandler(){
         super();
@@ -48,6 +48,7 @@ public class StudentHandler {
             statement.execute(sql);
             for(int i=0;i<students.size();i++)
             {
+                boolean majorIDsFlag=false;
                 String keys="(";
                 String values="(";
                 student=students.get(i);
@@ -154,11 +155,16 @@ public class StudentHandler {
                         case "schoolID":
                             keys+="schoolID,";
                             values+="'"+value+"',";
+                            major.setSchoolID(value);
                             break;
                         case "majorID":
                             keys+="majorID,";
                             values+="'"+value+"',";
                             major.setMajorId(value);
+                            if(!majorIDs.contains(value)){
+                                majorIDsFlag=true;
+                                majorIDs.add(value);
+                            }
                             break;
                         case "stuID":
                             keys+="stuID,";
@@ -173,12 +179,19 @@ public class StudentHandler {
                             break;
                     }
                 }
+                if(majorIDsFlag)
+                    majors.add(major);
                 keys=keys.substring(0,keys.length()-1);
                 values=values.substring(0,values.length()-1);
                 keys+=")";
                 values+=")";
                 sql="insert into student "+keys+" values "+values;
                 statement.execute(sql);
+            }
+            if(majors.size()!=0){
+                MajorHandler majorHandler=new MajorHandler();
+                majorHandler.setMajors(majors);
+                majorHandler.majorsIntoSql();
             }
         }
         catch (Exception exception){
