@@ -58,7 +58,19 @@ $(document).ready(function(){
     $("#delete-line").click(function(){
         getJsonTemps(changeLine,"delete");
     });
-
+    $(".panel-filter-button").click(function(){
+        var request_key="";
+        var request_value="";
+        $(".input-conditions-main").each(function(){
+                request_key+=$(this).val()+",";
+        })
+        $(".input-conditions-content").each(function(){
+                request_value+=$(this).val()+",";
+        })
+        if(request_key!=""&&request_value!=""){
+            window.location.href=("datableAction.action?request_key="+request_key+"&request_value="+request_value);
+        }
+    });
     function getJsonTemps(arr,kind){
         var result="{\"student\":[";
         while(jsonTemps.length>0){jsonTemps.pop();}
@@ -109,8 +121,6 @@ $(document).ready(function(){
                 }
             });
         }
-
-
     }
     function getJsonTemp(stuID){
         var result="{\"stuID\":\""+stuID+"\"";
@@ -140,4 +150,21 @@ function deleteArray(arr,val){
     for(i=0;i<temp.length;i++){
         arr.push(temp[i]);
     }
+}
+function addConditionLine(){
+    var htmlSave=$(".panel-filter-content").html();
+    htmlSave="<div class=\"input-line\">"+
+        "<div class=\"input-list\">"+
+        "<input type=\"text\" class=\"input-list-item input-conditions-main\">"+
+        "<input type=\"text\" class=\"input-list-item\" value=\"=\" readonly>"+
+        "<input type=\"text\" class=\"input-list-item input-conditions-content\">"+
+        "</div>"+
+        "<div class=\"input-close\" onclick=\"closeConditionLine(this)\"></div>"+
+        "</div>"+htmlSave;
+    $(".panel-filter-content").html(htmlSave);
+}
+function closeConditionLine(current){
+    current.parentNode.style.cssText="display:none";
+    current.parentNode.children[0].children[0].value="";
+    current.parentNode.children[0].children[2].value="";
 }

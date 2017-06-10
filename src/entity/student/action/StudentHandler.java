@@ -25,7 +25,6 @@ public class StudentHandler {
         super();
         connection=new BaseConnection("ssxs").getConnection();
     }
-
     public void setStudents(List<Student> students){
         this.students=students;
     }

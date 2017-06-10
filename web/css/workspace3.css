@@ -144,7 +144,7 @@ input[type='checkbox']{
 .panel-filter-verify{
     min-height: 35px;
     width: 90%;
-    margin: 0 auto 0;
+    margin: 0 auto 15px;
     display: flex;
     display: -webkit-flex;
     flex-direction: row;

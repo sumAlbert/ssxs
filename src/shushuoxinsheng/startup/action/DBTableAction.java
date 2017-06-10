@@ -2,6 +2,7 @@ package shushuoxinsheng.startup.action;
 
 
 import entity.Student;
+import excelhandler.excelentity.ExcelColumnNameArr;
 import org.apache.struts2.ServletActionContext;
 import sql.SelectSqlUsual;
 
@@ -23,13 +24,20 @@ public class DBTableAction {
     private int pageUpper;
     private String pageNum;
     private String limitNumShow;
+    private ArrayList<String> condition_keys;
+    private ArrayList<String> condition_values;
 
 
     public String execute() throws Exception {
         // TODO Auto-generated method stub
         HttpServletRequest request = ServletActionContext.getRequest();
+        ExcelColumnNameArr excelColumnNameArr=new ExcelColumnNameArr();
+        condition_keys=new ArrayList<String>();
+        condition_values=new ArrayList<String>();
         String page=request.getParameter("page");
         String limit=request.getParameter("limit");
+        String request_key=request.getParameter("request_key");
+        String request_value=request.getParameter("request_value");
         tableName=request.getParameter("tableName");
         String itemID="iID1234567890";
         if(page==null){
@@ -41,9 +49,26 @@ public class DBTableAction {
         if(tableName==null){
             tableName="student";
         }
+        if(request_key==null||request_value==null){
+            request_key="";
+            request_value="";
+        }
+        else
+        {
+            String[] request_keys=request_key.split(",");
+            String[] request_values=request_value.split(",");
+            for(int i=0;i<request_keys.length;i++){
+                String request_keys_e=excelColumnNameArr.getC2E().get(request_keys[i]);
+                String request_values_e=request_values[i];
+                if(request_keys_e!=null&&!request_keys_e.equals("")&&request_keys_e!=null&&!request_values_e.equals("")){
+                    condition_keys.add(request_keys_e);
+                    condition_values.add(request_values_e);
+                }
+            }
+        }
         int limitNum=Integer.parseInt(limit);
         SelectSqlUsual selectSqlUsual=new SelectSqlUsual();
-        selectSqlUsual.getDBTableUsual(itemID,tableName,limit,page);
+        selectSqlUsual.getDBTableUsual(itemID,tableName,limit,page,condition_keys,condition_values);
         selectSqlUsual.getDBCountTotals(itemID,"student");
         selectSqlUsual.getDBCountTotals(itemID,"major");
         studentCountTotal=selectSqlUsual.getDbCountTotalMap().get("student").intValue();

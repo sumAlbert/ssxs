@@ -24,7 +24,7 @@ public class SelectSqlUsual {
         connection=(new BaseConnection("ssxs")).getConnection();
     }
 
-    public void getDBTableUsual(String itemID,String tableName,String limit,String page){
+    public void getDBTableUsual(String itemID,String tableName,String limit,String page,ArrayList<String> condition_keys,ArrayList<String> condition_values){
         int limitNum=Integer.parseInt(limit);
         int pageNum=Integer.parseInt(page);
         int startNum=(pageNum-1)*limitNum;
@@ -33,6 +33,10 @@ public class SelectSqlUsual {
         students=new ArrayList<Student>();
         String schoolID="";
         String majorID="";
+        String condition="";
+        for(int i=0;i<condition_keys.size();i++){
+            condition+=" and "+condition_keys.get(i)+" = '"+condition_values.get(i)+"'";
+        }
         try{
             DatabaseMetaData dmd = connection.getMetaData();
             Statement statement=connection.createStatement();
@@ -40,7 +44,7 @@ public class SelectSqlUsual {
             ResultSet rs;
             if(tableName.equals("student"))
             {
-                sql="select * from (student natural join school) natural join major where itemID = '"+itemID+"' limit "+startNum+","+limitNum;
+                sql="select * from (student natural join school) natural join major where itemID = '"+itemID+"'"+condition+" limit "+startNum+","+limitNum;
                 rs= dmd.getColumns( null,"%","student","%");
                 while( rs.next())
                 {
@@ -73,7 +77,7 @@ public class SelectSqlUsual {
             }
             else
             {
-                sql="select * from "+tableName+" where itemID = '"+itemID+"' limit "+startNum+","+limitNum;
+                sql="select * from "+tableName+" where itemID = '"+itemID+"'"+condition+" limit "+startNum+","+limitNum;
                 rs = dmd.getColumns( null,"%",tableName,"%");
                 while( rs.next())
                 {

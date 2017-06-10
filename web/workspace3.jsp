@@ -38,14 +38,14 @@
         <div class="panel-filter-content">
             <div class="input-line">
                 <div class="input-list">
-                    <input type="text" class="input-list-item">
-                    <input type="text" class="input-list-item" value="=">
-                    <input type="text" class="input-list-item">
+                    <input type="text" class="input-list-item input-conditions-main">
+                    <input type="text" class="input-list-item" value="=" readonly>
+                    <input type="text" class="input-list-item input-conditions-content">
                 </div>
-                <div class="input-close"></div>
+                <div class="input-close" onclick="closeConditionLine(this)"></div>
             </div>
             <div class="input-line-control">
-                <div class="input-line-add"></div>添加搜索条件
+                <div class="input-line-add" onclick="addConditionLine()"></div>添加搜索条件
             </div>
         </div>
         <div class="panel-filter-verify">
