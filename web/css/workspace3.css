@@ -320,11 +320,11 @@ input[type='checkbox']{
 /*中部table*/
 .workspace-content{
     min-height: 400px;
-    width: 90%;
     margin: 25px auto;
 }
 .excel-main{
     height: 100%;
+    overflow-y: hidden;
     min-height: 400px;
     width: 100%;
     background: linear-gradient(#DEEBF7 30px,transparent 0) top center no-repeat , linear-gradient(#eee 30px,white 0,white 60px) top center repeat;
@@ -429,6 +429,9 @@ input[type='checkbox']{
 .excel-cell-0-active{
     background: url('../icon/circle-active.png') center center no-repeat;
     background-size: 60% 60%;
+}
+.excel-cell >input{
+    text-align: center;
 }
 /*下部翻页*/
 .workspace-pick{

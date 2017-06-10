@@ -18,7 +18,6 @@ public class InsertSqlUsual {
                 String temp=resultSet.getString("name");
                 System.out.println(temp);
             }
-            System.out.println("123");
         }
         catch (Exception exception){
             exception.printStackTrace();

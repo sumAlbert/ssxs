@@ -2,7 +2,9 @@
  * Created by dell2 on 2017/6/10.
  */
 $(document).ready(function(){
+    var screenWidth=document.body.clientWidth;
     $(".main-hidden").hide();
+    $(".excel-main").width((screenWidth*0.8-220)*0.9);
     $(".panel-filter-close").click(function(){
         $(".main-hidden").hide();
     });
@@ -13,16 +15,19 @@ $(document).ready(function(){
         $(".table-info-active").removeClass("table-info-active");
         $(this).addClass("table-info-active");
     });
-    $(".excel-cell").click(function(){
+    $(".excel-cell > input").click(function(){
         $(".excel-cell-active").addClass("excel-cell");
         $(".excel-cell-active").removeClass("excel-cell-active");
-        $(this).addClass("excel-cell-active");
+        $(this).parent().addClass("excel-cell-active");
     });
-    $(".excel-cell").dblclick(function(){
+    $(".excel-cell > input").dblclick(function(){
         $(this).removeAttr("readonly");
+        $(this).focus();
+        $(this).css({"font-size":"15px"});
     });
-    $(".excel-cell").blur(function(){
+    $(".excel-cell > input").blur(function(){
         $(this).attr("readonly","readonly");
+        $(this).css({"font-size":"13px"});
     });
     $("input[type='checkbox']").click(function(){
         if($(this).prop("checked")){

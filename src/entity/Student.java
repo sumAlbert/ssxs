@@ -1,6 +1,7 @@
 package entity;
 
 import com.opensymphony.xwork2.ActionContext;
+import excelhandler.excelentity.ExcelColumnNameArr;
 import hash.HashNum;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.Map;
  */
 public class Student {
     private List<String> attrList=new ArrayList<String>();
+    private List<String> displayList=new ArrayList<String>();
     private Map<String,String> initMap;
     private boolean vaild;
 
@@ -174,9 +176,6 @@ public class Student {
     public void setVaild(boolean vaild){
         this.vaild=vaild;
     }
-    public void setAttrList(List<String> attrList){
-        this.attrList=attrList;
-    }
     public void setStudentID(String studentID){
         this.studentID=studentID;
     }
@@ -251,6 +250,12 @@ public class Student {
     }
     public void setStuID(String stuID){
         this.stuID=stuID;
+    }
+    public void setDisplayList(List<String> displayList){
+        this.displayList=displayList;
+    }
+    public void setAttrList(List<String> attrList){
+        this.attrList=attrList;
     }
 
     public String getBatch(){
@@ -350,5 +355,22 @@ public class Student {
     }
     public Map<String,String> getInitMap(){
         return this.initMap;
+    }
+    public List<String> getDisplayList(){
+        return this.displayList;
+    }
+
+
+    public void setDisplayAttrList(List<String> attrList){
+        this.attrList=attrList;
+        ExcelColumnNameArr excelColumnNameArr=new ExcelColumnNameArr();
+        for(int i=0;i<attrList.size();i++){
+            String e=attrList.get(i);
+            String c=excelColumnNameArr.getE2C().get(e);
+            if(c!=null)
+            {
+                displayList.add(c);
+            }
+        }
     }
 }
