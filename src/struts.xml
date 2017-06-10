@@ -26,5 +26,15 @@
         <action name="datableAction" class="shushuoxinsheng.startup.action.DBTableAction">
             <result name="success">workspace3.jsp</result>
         </action>
+        <action name="dbDeleteSql" class="sql.WebSqlChange" method="dbDeleteSql">
+            <result name="true" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="dbChangeSql" class="sql.WebSqlChange" method="dbChangeSql">
+            <result name="true" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
     </package>
 </struts>

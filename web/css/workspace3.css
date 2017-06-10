@@ -14,6 +14,23 @@ input[type='checkbox']{
     cursor: pointer;
 }
 
+.main-cloth{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    background: white;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
 .main-hidden{
     position: fixed;
     top: 0;
@@ -156,7 +173,6 @@ input[type='checkbox']{
 
 /*主操作页面*/
 .main{
-    height: 100%;
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -325,7 +341,7 @@ input[type='checkbox']{
 .excel-main{
     height: 100%;
     overflow-y: hidden;
-    min-height: 400px;
+    min-height: 407px;
     width: 100%;
     background: linear-gradient(#DEEBF7 30px,transparent 0) top center no-repeat , linear-gradient(#eee 30px,white 0,white 60px) top center repeat;
     background-size: 100% 60px,100% 60px;
@@ -435,7 +451,7 @@ input[type='checkbox']{
 }
 /*下部翻页*/
 .workspace-pick{
-    margin: 0 auto;
+    margin: 0 auto 20px;
     width: 90%;
     display: flex;
     display: -webkit-flex;
@@ -504,4 +520,28 @@ input[type='checkbox']{
     border: .01em solid #444;
     color: #444;
     background: #f9f9f9;
+}
+
+.excel-extra-line{
+    height: 30px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+}
+.excel-extra-cell{
+    height: 28px;
+    padding: 1px;
+    min-width: 200px;
+    border-right: 1px dashed #ccc;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
 }

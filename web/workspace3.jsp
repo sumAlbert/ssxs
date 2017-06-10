@@ -28,7 +28,8 @@
     <script type="text/javascript" src="./js/workspace3.js"></script>
 </head>
 <body>
-<div class="main-hidden">
+<div class="main-cloth"></div>
+<div class="main-hidden" style="display: none;">
     <div class="panel-filter">
         <div class="panel-filter-header">
             <div class="panel-filter-name">数据筛选</div>
@@ -74,15 +75,16 @@
         <div class="workspace-menu">
             <div class="menu-button-list-left">
                 <div class="menu-button">添加列</div><!--
-				--><div class="menu-button">删除列</div><!--
+				--><div class="menu-button" id="delete-line">删除列</div><!--
 				--><div class="menu-button" id="menu-button-filter">筛选</div>
             </div>
             <div class="menu-right">
-                <input type="text" name="">条/页
+                <input type="text" name="" value="<s:property value="limitNumShow"></s:property>" id="menu-limit">条/页
             </div>
         </div>
         <div class="workspace-content">
             <div class="excel-main">
+                <div class="hidden-info" id="column-num"><%=displayList.size()%></div>
                 <div class="excel-header">
                     <div class="excel-header-cell excel-header-cell-0" style="min-width: 30px;max-width: 30px"></div>
                     <s:iterator value='students' id="st" status="st_status" begin="0" end="0">
@@ -99,7 +101,7 @@
                     Student student=students.get(i);
                     String stuID=student.getStuID();
                 %>
-                    <div class="excel-line">
+                    <div class="excel-line" id="<%=stuID%>">
                         <div class="hidden-info"><%=stuID%></div>
                         <div class="excel-cell excel-cell-0" style="min-width: 30px;max-width: 30px">
                             <input type="checkbox" name="">
@@ -110,7 +112,7 @@
                                 Map<String,String> initMap=student.getInitMap();
                                 String e_data=initMap.get(e);
                         %>
-                        <div class="excel-cell">
+                        <div class="excel-cell excel-cell-updata">
                             <div class="hidden-info"><%=e%></div>
                             <input type="text" name="" value='<%=e_data%>' readonly>
                         </div>
@@ -122,21 +124,70 @@
                     }
                 %>
                 </div>
+                <div class="excel-content">
+                    <div class="excel-extra-line">
+                        <div class="hidden-info"></div>
+                        <div class="excel-extra-cell excel-cell-0" style="min-width: 30px;max-width: 30px">
+                            <input type="checkbox" name="">
+                        </div>
+                        <%
+                            for(int j=0;j<displayList.size();j++){
+                                String e=excelColumnNameArr.getC2E().get(displayList.get(j));
+                        %>
+                        <div class="excel-extra-cell">
+                            <div class="hidden-info"><%=e%></div>
+                            <input type="text" name="" value=''>
+                        </div>
+                        <%
+                            }
+                        %>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="workspace-pick">
             <div class="pick-left">
-                <div class="pick-left-button">修改</div>
+                <div class="pick-left-button" id="verify-change">修改</div>
             </div>
             <div class="pick-middle">
-                <input type="text" name="">页/1000页
+                <input type="text" name="" value="<s:property value="pageNum"></s:property>" id="pick-index">页/<s:property value="pageUpper"></s:property>页
             </div>
             <div class="pick-right">
-                <div class="pick-button">上一页</div><!--
-				--><div class="pick-button">下一页</div>
+                <div class="pick-button" onclick="turnPage(<s:property value="pageNum"></s:property>,'pre',<s:property value="pageUpper"></s:property>)">上一页</div><!--
+				--><div class="pick-button" onclick="turnPage(<s:property value="pageNum"></s:property>,'next',<s:property value="pageUpper"></s:property>)">下一页</div>
             </div>
         </div>
     </div>
 </div>
 </body>
+<script>
+
+    $(document).ready(function(){
+        $(".main-cloth").hide();
+        $("#pick-index").blur(function(){
+            var value=$(this).val();
+            if(!isNaN(value)){
+                if(parseInt(value)<=parseInt(<s:property value="pageUpper"></s:property>)&&parseInt(value)>=1&&parseInt(value)!=parseInt(<s:property value="pageNum"></s:property>)){
+                    window.location.href=("datableAction.action?page="+value);
+                }
+            }
+        });
+        $("#menu-limit").blur(function(){
+            var value=$(this).val();
+            if(!isNaN(value)){
+                if(parseInt(value)<=20&&parseInt(value)>=12&&parseInt(value)!=parseInt(<s:property value="limitNumShow"></s:property>)){
+                    window.location.href=("datableAction.action?limit="+value);
+                }
+            }
+        });
+    });
+    function turnPage(pageNum,kind,upper) {
+        if(kind=="pre"&&parseInt(pageNum)!=1){
+            window.location.href=("datableAction.action?page="+(parseInt(pageNum)-1));
+        }
+        if(kind=="next"&&parseInt(pageNum)<parseInt(upper)){
+            window.location.href=("datableAction.action?page="+(parseInt(pageNum)+1));
+        }
+    }
+</script>
 </html>

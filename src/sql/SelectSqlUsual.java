@@ -27,7 +27,7 @@ public class SelectSqlUsual {
     public void getDBTableUsual(String itemID,String tableName,String limit,String page){
         int limitNum=Integer.parseInt(limit);
         int pageNum=Integer.parseInt(page);
-        int startNum=pageNum*limitNum;
+        int startNum=(pageNum-1)*limitNum;
         columnName=new ArrayList<String>();
         columnType=new ArrayList<String>();
         students=new ArrayList<Student>();

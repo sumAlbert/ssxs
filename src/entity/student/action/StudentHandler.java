@@ -199,4 +199,46 @@ public class StudentHandler {
         }
         return result;
     }
+
+    public boolean deleteStudents(ArrayList<Student> students){
+        try{
+            Statement statement=connection.createStatement();
+            String sql="";
+            for(int i=0;i<students.size();i++){
+                Student student=students.get(i);
+                sql="delete from student where stuID = '"+student.getStuID()+"'";
+                statement.execute(sql);
+            }
+        }catch(Exception exception){
+            exception.printStackTrace();
+        }
+        return true;
+    }
+
+    public boolean changeStudents(ArrayList<Student> students){
+        try{
+            Statement statement=connection.createStatement();
+            String sql="";
+            for(int i=0;i<students.size();i++){
+                Student student=students.get(i);
+                Map<String,String> initMap=student.getInitMap();
+                Iterator iterator=initMap.entrySet().iterator();
+                String sql_temp="stuID='"+initMap.get("stuID")+"'";
+                while(iterator.hasNext()){
+                    Map.Entry<String,String> entry=(Map.Entry<String,String>)iterator.next();
+                    String key=entry.getKey();
+                    String value=entry.getValue();
+                    if(!(key.equals("majorKind")||key.equals("majorName")||key.equals("schoolName")))
+                        sql_temp+=","+key+"='"+value+"'";
+                }
+                sql="update student set "+sql_temp+" where stuID = '"+student.getStuID()+"'";
+                System.out.println(sql);
+                statement.execute(sql);
+
+            }
+        }catch(Exception exception){
+            exception.printStackTrace();
+        }
+        return true;
+    }
 }
