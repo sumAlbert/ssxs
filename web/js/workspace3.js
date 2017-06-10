@@ -1,0 +1,37 @@
+/**
+ * Created by dell2 on 2017/6/10.
+ */
+$(document).ready(function(){
+    $(".main-hidden").hide();
+    $(".panel-filter-close").click(function(){
+        $(".main-hidden").hide();
+    });
+    $("#menu-button-filter").click(function(){
+        $(".main-hidden").show();
+    });
+    $(".table-info").click(function(){
+        $(".table-info-active").removeClass("table-info-active");
+        $(this).addClass("table-info-active");
+    });
+    $(".excel-cell").click(function(){
+        $(".excel-cell-active").addClass("excel-cell");
+        $(".excel-cell-active").removeClass("excel-cell-active");
+        $(this).addClass("excel-cell-active");
+    });
+    $(".excel-cell").dblclick(function(){
+        $(this).removeAttr("readonly");
+    });
+    $(".excel-cell").blur(function(){
+        $(this).attr("readonly","readonly");
+    });
+    $("input[type='checkbox']").click(function(){
+        if($(this).prop("checked")){
+            $(this).parent().addClass("excel-cell-0-active");
+            $(this).parent().parent().addClass("excel-line-active");
+        }
+        else{
+            $(this).parent().removeClass("excel-cell-0-active");
+            $(this).parent().parent().removeClass("excel-line-active");
+        }
+    });
+});

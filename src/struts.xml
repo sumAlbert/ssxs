@@ -23,5 +23,8 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <action name="datableAction" class="shushuoxinsheng.startup.action.DBTableAction">
+            <result name="success">workspace3.jsp</result>
+        </action>
     </package>
 </struts>

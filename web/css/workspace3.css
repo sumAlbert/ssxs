@@ -1,0 +1,504 @@
+html,body{margin:0;padding:0;height: 100%;width: 100%;background: #f4f4f4;position: relative;}
+
+
+input[type='text']{
+    width: 90%;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+input[type='checkbox']{
+    opacity:0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.main-hidden{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: hsla(0,0%,50%,.4);
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.panel-filter{
+    min-width: 600px;
+    background: white;
+    border-radius: .3em;
+    min-height: 200px;
+    color: #444;
+}
+.panel-filter-header{
+    height: 35px;
+    width: 90%;
+    margin: 15px auto 0;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.panel-filter-close{
+    height: 35px;
+    width: 35px;
+    background: url(../icon/close1.png) center center no-repeat;
+    background-size: 50% 50%;
+    cursor: pointer;
+}
+.panel-filter-content{
+    min-height: 35px;
+    width: 90%;
+    margin: 15px auto 0;
+}
+.input-line{
+    height: 35px;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.input-list{
+    height: 35px;
+    width: 50%;
+    margin-bottom: 5px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+}
+.input-list-item{
+    text-align: center;
+}
+.input-list > .input-list-item{
+    height: 80%;
+    border: 1px solid #707070;
+    border-radius: .3em;
+}
+.input-list-item:nth-child(2){
+    width: 20px;
+    border: none;
+}
+.input-close{
+    background: url(../icon/close2.png) center center no-repeat;
+    background-size: 60% 60%;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+}
+.input-line-control{
+    height: 35px;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    align-items: center;
+    -webkit-align-items: center;
+    color: #0099cc;
+    font-size: 14px;
+}
+.input-line-add{
+    height: 25px;
+    width: 25px;
+    background: url(../icon/add.png) center left no-repeat;
+    background-size: 80% 80%;
+    cursor: pointer;
+}
+.panel-filter-verify{
+    min-height: 35px;
+    width: 90%;
+    margin: 0 auto 0;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.panel-filter-button{
+    padding: .25em .5em;
+    color: white;
+    background: #0099cc;
+    cursor: pointer;
+    border-radius: .3em;
+    border: 1px solid transparent;
+}
+.panel-filter-button:hover{
+    padding: .25em .5em;
+    color: white;
+    background: #6699cc;
+    cursor: pointer;
+    border-radius: .3em;
+    border: 1px solid #6666ff;
+}
+
+/*主操作页面*/
+.main{
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    background: white;
+    box-shadow: 0 0 .1em .1em hsla(0,0%,50%,.1);
+}
+
+/*左侧*/
+.table-list{
+    height: 100%;
+    width: 220px;
+    padding: .01em;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+}
+.table-list-box{
+    padding-top: .01em;
+    margin-top: 50px;
+    border-right: .01em solid #ccc;
+}
+.table-button{
+    margin: 0 auto;
+    width: 70%;
+    padding: .27em .54em;
+    border-radius: .3em;
+    border: .01em solid #777;
+    text-align: center;
+    cursor: pointer;
+    color: #777;
+}
+.table-button:hover{
+    margin: 0 auto;
+    width: 70%;
+    padding: .27em .54em;
+    border-radius: .3em;
+    border: .01em solid #1E90FF;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    background: #1E90FF;
+}
+.table-button-control{
+    margin: 0 auto 1em;
+    width: 70%;
+    padding: .27em .54em;
+    border-radius: .3em;
+    border: .01em solid #777;
+    text-align: center;
+    cursor: pointer;
+    color: #777;
+}
+.table-button-control:hover{
+    margin: 0 auto 1em;
+    width: 70%;
+    padding: .27em .54em;
+    border-radius: .3em;
+    border: .01em solid #1E90FF;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    background: #1E90FF;
+}
+.table-infos{
+    margin: 50px 0 0 0;
+    min-height: 356px;
+    max-height: 356px;
+}
+.table-info{
+    padding: .27em 1.6em;
+    position: relative;
+    line-height: 2em;
+    color: #333;
+}
+.table-info:hover{
+    padding: .27em 1.6em;
+    position: relative;
+    line-height: 2em;
+    color: #aaa;
+    background: #f4f4f4;
+    cursor: pointer;
+}
+.table-info-active{
+    padding: .27em 1.6em;
+    position: relative;
+    line-height: 2em;
+    color: #aaa;
+    background: #f4f4f4;
+    cursor: pointer;
+}
+.table-name{
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 7em;
+    vertical-align: middle;
+}
+.table-count{
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+
+/*右侧工作区*/
+.workspace{
+    flex: 1;
+    -webkit-flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+}
+/*顶部菜单*/
+.workspace-menu{
+    margin: 50px auto 0;
+    width: 90%;
+}
+.menu-button-list-left{
+    display: inline-block;
+    line-height: 1.5em;
+}
+.menu-button{
+    color: #888;
+    display: inline-block;
+    padding: .27em .74em;
+    cursor: pointer;
+    border-top: .01em solid #888;
+    border-bottom: .01em solid #888;
+    position: relative;
+}
+.menu-button:hover{
+    color: #444;
+    background: #f7f7f7;
+}
+.menu-button:nth-child(1){
+    border-radius: .3em 0 0 .3em;
+    border: .01em solid #888;
+}
+.menu-button:nth-last-child(1){
+    border-radius: 0 .3em .3em 0;
+    border: .01em solid #888;
+}
+.menu-right{
+    color: #666;
+    display: inline-block;
+    position: relative;
+    float: right;
+}
+.menu-right >input{
+    border: #ccc .1em solid;
+    max-width: 2.9em;
+    line-height: 2em;
+    text-align: center;
+}
+
+/*中部table*/
+.workspace-content{
+    min-height: 400px;
+    width: 90%;
+    margin: 25px auto;
+}
+.excel-main{
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+    background: linear-gradient(#DEEBF7 30px,transparent 0) top center no-repeat , linear-gradient(#eee 30px,white 0,white 60px) top center repeat;
+    background-size: 100% 60px,100% 60px;
+    box-shadow: 0 .03em  0 .13em #ddd;
+    border-radius: .3em;
+    overflow-x: scroll;
+}
+.excel-header{
+    height: 30px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+}
+.excel-header-cell-active{
+    height: 28px;
+    padding: 1px;
+    min-width: 200px;
+    border-right: 1px dashed #ccc;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.excel-header-cell{
+    height: 28px;
+    padding: 1px;
+    min-width: 200px;
+    border-right: 1px dashed #ccc;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.excel-line{
+    height: 30px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+}
+.excel-line-active{
+    height: 30px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    background: #ADD8E6;
+}
+.hidden-info{
+    display: none;
+}
+.excel-cell-active{
+    height: 28px;
+    padding: 1px;
+    min-width: 200px;
+    border-right: 1px dashed #ccc;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    background: linear-gradient(#BFDBFF,#BFDBFF) center center repeat ,linear-gradient(#5F83CD,#5F83CD) center center repeat;
+    background-clip:content-box,padding-box;
+}
+.excel-cell{
+    height: 28px;
+    padding: 1px;
+    min-width: 200px;
+    border-right: 1px dashed #ccc;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
+.excel-cell-0{
+    background: url('../icon/circle.png') center center no-repeat;
+    background-size: 60% 60%;
+}
+.excel-cell-0-active{
+    background: url('../icon/circle-active.png') center center no-repeat;
+    background-size: 60% 60%;
+}
+/*下部翻页*/
+.workspace-pick{
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+.pick-left-button{
+    margin: 0 auto;
+    width: 70%;
+    padding: .27em .54em;
+    border-radius: .3em;
+    border: .01em solid #777;
+    text-align: center;
+    cursor: pointer;
+    color: #777;
+}
+.pick-left-button:hover{
+    margin: 0 auto;
+    width: 70%;
+    padding: .27em .54em;
+    border-radius: .3em;
+    border: .01em solid #333;
+    text-align: center;
+    cursor: pointer;
+    color: #333;
+    background: #f9f9f9;
+}
+.pick-middle{
+    color: #666;
+}
+.pick-middle>input{
+    border: #ccc .1em solid;
+    max-width: 2.9em;
+    line-height: 2em;
+    text-align: center;
+}
+.pick-right{
+    line-height: 1.5em;
+}
+.pick-button:nth-child(1){
+    display: inline-block;
+    border: .01em solid #888;
+    border-radius: .3em 0 0 .3em;
+    border-right: none;
+    color: #888;
+    padding: .27em .74em;
+    cursor: pointer;
+}
+.pick-button:nth-child(2){
+    display: inline-block;
+    border: .01em solid #888;
+    border-radius: 0 .3em .3em 0;
+    color: #888;
+    padding: .27em .74em;
+    cursor: pointer;
+}
+.pick-button:nth-child(1):hover{
+    border: .01em solid #444;
+    color: #444;
+    border-right: none;
+    background: #f9f9f9;
+}
+.pick-button:nth-child(2):hover{
+    border: .01em solid #444;
+    color: #444;
+    background: #f9f9f9;
+}
