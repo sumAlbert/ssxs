@@ -11,6 +11,7 @@
 <html>
 <head>
   <%--<meta http-equiv="refresh" content="0;url=login.jsp">--%>
-  <meta http-equiv="refresh" content="0;url=datableAction.action">
+  <%--<meta http-equiv="refresh" content="0;url=datableAction.action">--%>
   <%--<meta http-equiv="refresh" content="0;url=index.action">--%>
+    <meta http-equiv="refresh" content="0;url=displayshow.jsp">
 </html>
