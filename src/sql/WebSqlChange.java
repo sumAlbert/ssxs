@@ -1,7 +1,11 @@
 package sql;
 
+import com.opensymphony.xwork2.ActionContext;
+import entity.Item;
 import entity.Student;
+import entity.item.action.ItemHandler;
 import entity.student.action.StudentHandler;
+import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
@@ -51,7 +55,6 @@ public class WebSqlChange {
         result=jsonObject.toString();
         return "true";
     }
-
     public String dbChangeSql(){
         HttpServletRequest request = ServletActionContext.getRequest();
         String node=request.getParameter("node");
@@ -76,6 +79,21 @@ public class WebSqlChange {
         Map map= new HashMap();
         map.put("result","success");
         jsonObject=JSONObject.fromObject(map);
+        result=jsonObject.toString();
+        return "true";
+    }
+    public String dbDisplaySave(){
+        HttpServletRequest request = ServletActionContext.getRequest();
+        ActionContext ac=ActionContext.getContext();
+        Map session=ac.getSession();
+        Item item=(Item)session.get("itemInfo");
+        String itemID=item.getItemID();
+        String order=request.getParameter("displayIDOrder");
+        ItemHandler itemHandler=new ItemHandler();
+        itemHandler.saveItem(itemID,order);
+        Map map= new HashMap();
+        map.put("result","success");
+        JSONObject jsonObject=JSONObject.fromObject(map);
         result=jsonObject.toString();
         return "true";
     }

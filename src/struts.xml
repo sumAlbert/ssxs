@@ -36,5 +36,13 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <action name="displayIDOrder" class="sql.WebSqlChange" method="dbDisplaySave">
+            <result name="true" type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="displayShowAction" class="shushuoxinsheng.startup.action.DisplayShowAction">
+            <result name="success">workspace1.jsp</result>
+        </action>
     </package>
 </struts>

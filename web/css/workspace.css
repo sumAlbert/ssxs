@@ -337,29 +337,49 @@ margin: 0 0 .1em 0;
 
 /*中间的展示区域*/
 .work-display{
+	position: relative;
+	flex: 1;
+	-webkit-flex: 1;
+	overflow: auto;
+	flex-direction: row;
+	-webkit-flex-direction: row;
+	border: 1px solid transparent;
+}
+.work-display-model-default{
+	background: #edeceb;
+	width: 21em;
+	margin: .75em auto 2em;
 	flex: 1;
 	-webkit-flex: 1;
 }
-.work-display-model-default{
-	width: 21em;
-	margin: .75em auto 2em;
-}
 .work-display-model-default > img{
+	display: block;
 	width: 100%;
+	margin: 0 auto;
 }
 .work-display-model{
 	display: none;
+	max-width: 18em;
+	min-height: 94vh;
+	margin: 2vh auto 2vh;
+	flex: 1;
+	-webkit-flex: 1;
+	background: white;
+	position: relative;
 }
 
 /*最右边的button部分*/
 .work-buttons{
+	top: 0;
+	position: fixed;
+	right: 0;
 	height: 100%;
 	width: 5em;
 	display: flex;
 	display: -webkit-flex;
-			flex-direction: column;
+	flex-direction: column;
 	-webkit-flex-direction: column;
-			justify-content: space-around;
+	justify-content: space-around;
 	-webkit-justify-content: space-around;
 }
 .button-list{
@@ -391,7 +411,7 @@ margin: 0 0 .1em 0;
 	background-size: 50% 50%;
 }
 .button:nth-child(3) > .button-img{
-	background: url("../icon/exit.png") center center no-repeat;
+	background: url("../icon/save.png") center center no-repeat;
 	background-size: 50% 50%;
 }
 .button:nth-child(4) > .button-img{
@@ -402,7 +422,6 @@ margin: 0 0 .1em 0;
 	text-align: center;
 	font-size: 50%;
 }
-
 /*数据上传界面*/
 .update-labels{
 	font-size: 130%;

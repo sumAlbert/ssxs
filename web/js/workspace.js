@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    	var displayOrder=new Array();
 		/*初始化页面模板的子菜单*/
 		for(var i=0;i<8;i++){
 			if(i==0){
@@ -223,6 +224,49 @@ $(document).ready(function(){
 				}
 			})
 		});
+		$(".page-model-content-item-card").click(function(){
+			displayOrder.push($(this).attr("id"));
+			if(displayOrder.length!=0){
+				$(".work-display-model").show();
+				$(".work-display-model-default").hide();
+			}
+			else
+			{
+				$(".work-display-model-default").show();
+				$(".work-display-model").hide();
+			}
+			$(this).clone().appendTo(".work-display-model");
+		});
+		/*保存displayIDorder*/
+		$(".button").eq(2).click(function(){
+			$.ajax({
+				type:"post",
+				url:"displayIDOrder",
+				timeout: 800000,
+				dataType: "json",
+				data:{
+					"displayIDOrder":getDisplayIDOrder()
+				},
+				success:function(msg){
+					alert("success");
+				},
+				error:function(){
+					alert("failure");
+				}
+			});
+		});
+    	function getDisplayIDOrder(){
+			var displayOrderStr="";
+			for(var i=0;i<displayOrder.length;i++){
+				if(i==0){
+					displayOrderStr+=displayOrder[i];
+				}
+				else{
+					displayOrderStr+=","+displayOrder[i];
+				}
+			}
+			return displayOrderStr;
+		}
 		/*测试用*/
 			for(var i=0;i<4;i++){
 				if(i==0){

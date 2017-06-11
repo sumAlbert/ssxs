@@ -50,14 +50,14 @@
                 </div>
                 <div class="page-model-content">
                     <div class="page-model-content-item">
-                        <div class="page-model-content-item-card">
+                        <div class="page-model-content-item-card" id="dd00001">
                             <div class="page-model-content-item-img">
                                 <img src="./pic/hot-firstName.png">
                             </div>
                             <div class="page-model-content-item-label">新生最热姓氏</div>
                             <div class="page-model-content-item-info">通过对新生姓名的统计，得到学校新生中出现最多姓氏</div>
                         </div>
-                        <div class="page-model-content-item-card">
+                        <div class="page-model-content-item-card" id="dd00002">
                             <div class="page-model-content-item-img">
                                 <img src="./pic/name-again.png">
                             </div>
@@ -66,14 +66,14 @@
                         </div>
                     </div>
                     <div class="page-model-content-item">
-                        <div class="page-model-content-item-card">
+                        <div class="page-model-content-item-card" id="dd00003">
                             <div class="page-model-content-item-img">
                                 <img src="./pic/cake-analyse.png">
                             </div>
                             <div class="page-model-content-item-label">生源地饼图分析</div>
                             <div class="page-model-content-item-info">通过饼状图对生源地的学生信息进行分析</div>
                         </div>
-                        <div class="page-model-content-item-card">
+                        <div class="page-model-content-item-card" id="dd00004">
                             <div class="page-model-content-item-img">
                                 <img src="./pic/China-map.png">
                             </div>
@@ -176,24 +176,24 @@
                 <img src="./pic/work-model-default.png">
             </div>
             <div class="work-display-model"></div>
-        </div>
-        <div class="work-buttons">
-            <div class="button-list">
-                <div class="button">
-                    <div class="button-img"></div>
-                    <div class="button-label">撤销</div>
-                </div>
-                <div class="button">
-                    <div class="button-img"></div>
-                    <div class="button-label">重做</div>
-                </div>
-                <div class="button">
-                    <div class="button-img"></div>
-                    <div class="button-label">退出</div>
-                </div>
-                <div class="button">
-                    <div class="button-img"></div>
-                    <div class="button-label">设置</div>
+            <div class="work-buttons">
+                <div class="button-list">
+                    <div class="button">
+                        <div class="button-img"></div>
+                        <div class="button-label">撤销</div>
+                    </div>
+                    <div class="button">
+                        <div class="button-img"></div>
+                        <div class="button-label">重做</div>
+                    </div>
+                    <div class="button">
+                        <div class="button-img"></div>
+                        <div class="button-label">保存</div>
+                    </div>
+                    <div class="button">
+                        <div class="button-img"></div>
+                        <div class="button-label">设置</div>
+                    </div>
                 </div>
             </div>
         </div>

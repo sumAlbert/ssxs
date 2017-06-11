@@ -34,4 +34,28 @@ public class ItemHandler {
         }
         return item;
     }
+
+    public boolean saveItem(String itemID,String displayIDOrder){
+        boolean result=true;
+        try{
+            Statement statement=connection.createStatement();
+            String sql="select count(*) from item where itemID = '"+itemID+"'";
+            String count="0";
+            ResultSet resultSet=statement.executeQuery(sql);
+            while(resultSet.next()){
+                count=resultSet.getString("count(*)");
+            }
+            if(count.equals("0")){
+                sql="insert into item values ('"+itemID+"','"+displayIDOrder+"')";
+            }
+            else{
+                sql="update item set displayIDOrder = '"+displayIDOrder+"' where itemID = '"+itemID+"'";
+            }
+            statement.execute(sql);
+        }
+        catch (Exception exception){
+            exception.printStackTrace();
+        }
+        return result;
+    }
 }
