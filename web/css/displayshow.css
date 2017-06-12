@@ -509,7 +509,9 @@ img{
     align-items: center;
     -webkit-align-items: center;
 }
-
+.hidden-info{
+    display: none;
+}
 /*响应式*/
 @media screen and (max-width: 750px){
     .show-main{

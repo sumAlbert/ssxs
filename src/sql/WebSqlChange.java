@@ -30,7 +30,7 @@ public class WebSqlChange {
     }
 
     public String dbDeleteSql(){
-        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpServletRequest request =  ServletActionContext.getRequest();
         String node=request.getParameter("node");
         JSONObject jsonObject=JSONObject.fromObject(node);
         JSONArray jsonArray=JSONArray.fromObject(jsonObject.get("student"));

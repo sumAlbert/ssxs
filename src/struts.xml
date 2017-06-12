@@ -42,7 +42,7 @@
             </result>
         </action>
         <action name="displayShowAction" class="shushuoxinsheng.startup.action.DisplayShowAction">
-            <result name="success">workspace1.jsp</result>
+            <result name="success">displayshow.jsp</result>
         </action>
     </package>
 </struts>
