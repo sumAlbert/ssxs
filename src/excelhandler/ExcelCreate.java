@@ -1,5 +1,6 @@
 package excelhandler;
 
+import excelhandler.excelTest.ExcelDataCreate;
 import excelhandler.excelentity.ExcelColumn;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormat;
@@ -29,10 +30,14 @@ public class ExcelCreate {
     }
     public String create(){
         try{
+            String auto="true";
             xssfWorkbook=new XSSFWorkbook();
             xssfSheet=xssfWorkbook.createSheet("sheet1");
             setStyle();
             setColumnHeader();
+            if(auto.equals("true")){
+                setTestData(4000);
+            }
             String savePath=getServletContext().getRealPath("/download");
             name= URLDecoder.decode(name,"utf-8");
             fileOutputStream=new FileOutputStream(savePath+"/"+name);
@@ -80,6 +85,18 @@ public class ExcelCreate {
                     break;
             }
         }
+    }
+    public void setTestData(int num){
+        XSSFRow xssfRow=xssfSheet.createRow(0);
+        ExcelDataCreate excelDataCreate=new ExcelDataCreate();
+        excelDataCreate.setSchool("华东师范大学");
+        ArrayList<String> row_db=excelDataCreate.createExcelRow(ALEC);
+        for(int i=0;i<ALEC.size();i++){
+            ExcelColumn excelColumn=ALEC.get(i);
+            XSSFCell xssfCell=xssfRow.createCell(i);
+            xssfCell.setCellValue(row_db.get(i));
+        }
+        System.out.println("123");
     }
 }
 
