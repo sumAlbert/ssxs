@@ -9,7 +9,7 @@ $(document).ready(function(){
             url: "excelEnterSql",
             dataType: "json",
             success: function(msg){
-                alert(msg);
+                window.location.href="datableAction.action";
             },
             error:function(){
                 alert(error);

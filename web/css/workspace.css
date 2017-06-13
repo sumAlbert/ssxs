@@ -504,7 +504,7 @@ margin: 0 0 .1em 0;
 	background-size: 50% 50%;
 }
 .button:nth-child(4) > .button-img{
-	background: url("../icon/setting.png") center center no-repeat;
+	background: url("../icon/test.png") center center no-repeat;
 	background-size: 50% 50%;
 }
 .button-label{

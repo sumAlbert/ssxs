@@ -28,14 +28,13 @@ public class ExcelCreate {
         this.name=name;
         this.ALEC=ALEC;
     }
-    public String create(){
+    public String create(String auto){
         try{
-            String auto="true";
             xssfWorkbook=new XSSFWorkbook();
             xssfSheet=xssfWorkbook.createSheet("sheet1");
             setStyle();
             setColumnHeader();
-            if(auto.equals("true")){
+            if(auto.equals("test")){
                 setTestData(4000);
             }
             String savePath=getServletContext().getRealPath("/download");

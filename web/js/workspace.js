@@ -1,5 +1,5 @@
 var jsonDisplay={
-	"dd00001":{"name":"最重名","title":"123","info":""},
+	"dd00001":{"name":"最重名","title":"","info":""},
     "dd00002":{"name":"血型分布","title":"","info":""},
     "dd00003":{"name":"邮箱分布","title":"","info":""},
     "dd00004":{"name":"最热姓氏分布","title":"","info":""},
@@ -228,6 +228,9 @@ $(document).ready(function(){
                 url : "excelCreater",
                 timeout : 800000,//超时时间：800秒
                 dataType : "json",//设置返回数据的格式
+                data:{
+                    type:"download"
+                },
 				success: function(data){
                     var jsondata=$.parseJSON(data);
                     window.location.href="./download/"+jsondata.name;
@@ -237,6 +240,7 @@ $(document).ready(function(){
 				}
 			})
 		});
+
 		$(".page-model-content-item-card").click(function(){
 			displayOrder.push($(this).attr("id"));
 			if(displayOrder.length!=0){
@@ -283,6 +287,25 @@ $(document).ready(function(){
 					alert("failure");
 				}
 			});
+		});
+		/*生成测试数据并且下载*/
+		$(".button").eq(3).click(function(){
+            $.ajax({
+                type : "post",//请求方式
+                url : "excelCreater",
+                timeout : 800000,//超时时间：800秒
+                dataType : "json",//设置返回数据的格式
+				data:{
+                	type:"test"
+				},
+                success: function(data){
+                    var jsondata=$.parseJSON(data);
+                    window.location.href="./download/"+jsondata.name;
+                },
+                error: function(){
+                    alert("error");
+                }
+            })
 		});
 		$(".wait-close").click(function(){
             document.getElementsByClassName("main-cloth")[0].style.display="none";

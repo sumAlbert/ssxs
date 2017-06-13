@@ -281,7 +281,7 @@
                     </div>
                     <div class="button">
                         <div class="button-img"></div>
-                        <div class="button-label">设置</div>
+                        <div class="button-label">测试</div>
                     </div>
                 </div>
             </div>

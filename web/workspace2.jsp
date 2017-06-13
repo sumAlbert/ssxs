@@ -10,9 +10,13 @@
 <html>
 <head>
     <title>ssxs</title>
+    <link rel="stylesheet" type="text/css" href="./css/workspace2.css">
 </head>
 <body>
 <div id="pre_kind_info"><s:property value="workspace2Kind"></s:property></div>
+<div class="main-cloth">
+    <div class="wait-pic"></div>
+</div>
 </body>
 <script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
 <script type="text/javascript" src="./js/workspace2.js"></script>

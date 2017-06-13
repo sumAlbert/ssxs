@@ -5,7 +5,9 @@ import entity.User;
 import excelhandler.ExcelCreate;
 import excelhandler.excelentity.ExcelColumn;
 import net.sf.json.JSONObject;
+import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,13 +27,15 @@ public class ExcelCreateAction {
     private String[] subject={"文史类","理工类","体育类","艺术类"};
     public String create(){
         ActionContext ac=ActionContext.getContext();
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String auto=request.getParameter("type");
         Map session=ac.getSession();
         User user=(User)session.get("userInfo");
         String name=user.getItems().get(0).getItemID().substring(2);
         String excelName="ex"+name+".xlsx";
         setALEC();
         ExcelCreate excelCreate=new ExcelCreate(excelName,ALEC);
-        excelCreate.create();
+        excelCreate.create(auto);
         Map<String,Object> map=new HashMap<String, Object>();
         map.put("name",excelName);
         JSONObject jsonObject=JSONObject.fromObject(map);
