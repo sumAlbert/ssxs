@@ -1,5 +1,18 @@
+var jsonDisplay={
+	"dd00001":{"name":"最重名","title":"123","info":""},
+    "dd00002":{"name":"血型分布","title":"","info":""},
+    "dd00003":{"name":"邮箱分布","title":"","info":""},
+    "dd00004":{"name":"最热姓氏分布","title":"","info":""},
+    "dd00005":{"name":"性别分布","title":"","info":""},
+    "dd00006":{"name":"专业类别分布","title":"","info":""},
+    "dd00007":{"name":"独生子女分布","title":"","info":""},
+    "dd00008":{"name":"政治面貌","title":"","info":""},
+    "dd00009":{"name":"星座分布","title":"","info":""},
+    "dd00010":{"name":"出生年份分布","title":"","info":""}
+}
+var displayOrder=new Array();
+var temp=new Array();
 $(document).ready(function(){
-    	var displayOrder=new Array();
 		/*初始化页面模板的子菜单*/
 		for(var i=0;i<8;i++){
 			if(i==0){
@@ -239,13 +252,29 @@ $(document).ready(function(){
 		});
 		/*保存displayIDorder*/
 		$(".button").eq(2).click(function(){
+			var schoolName=$("#input-school-name").val();
+			var schoolKind=$("#input-school-kind").val();
+			var schoolLocation=$("#input-school-location").val();
+			if(schoolName==null){
+				schoolName="";
+			}
+			if(schoolKind==null){
+				schoolKind="";
+			}
+			if(schoolLocation==null){
+				schoolLocation="";
+			}
 			$.ajax({
 				type:"post",
 				url:"displayIDOrder",
 				timeout: 800000,
 				dataType: "json",
 				data:{
-					"displayIDOrder":getDisplayIDOrder()
+					"displayIDOrder":getDisplayIDOrder(),
+					"displayDetail":JSON.stringify(jsonDisplay),
+					"name":schoolName,
+					"kind":schoolKind,
+					"location":schoolLocation
 				},
 				success:function(msg){
 					alert("success");
@@ -254,6 +283,16 @@ $(document).ready(function(){
 					alert("failure");
 				}
 			});
+		});
+		$(".wait-close").click(function(){
+            document.getElementsByClassName("main-cloth")[0].style.display="none";
+		});
+		$(".wait-button").click(function(){
+            document.getElementsByClassName("main-cloth")[0].style.display="none";
+            var key=document.getElementById("wait-hidden-info").innerHTML;
+            var tempJSON=jsonDisplay[key];
+            tempJSON["title"]=document.getElementById("wait-line-input").value;
+            tempJSON["info"]=document.getElementById("wait-line-textarea").value;
 		});
     	function getDisplayIDOrder(){
 			var displayOrderStr="";
@@ -295,4 +334,35 @@ function getFileName() {
     var pos2 = path.lastIndexOf(".");
     var pos = path.substring(pos2+1);
     return pos;
+}
+function inputDetail(current){
+	if(current.parentNode.parentNode.parentNode.className=="work-display"){
+		document.getElementsByClassName("main-cloth")[0].style.display="flex";
+		document.getElementById("wait-hidden-info").innerHTML=current.parentNode.id;
+        var key=current.parentNode.id;
+        var tempJSON=jsonDisplay[key];
+        document.getElementById("wait-line-input").value=tempJSON["title"];
+        document.getElementById("wait-line-textarea").value=tempJSON["info"];
+	}
+	else{
+	}
+}
+function deleteArray(arr,val){
+    while(temp.length>0){temp.pop();}
+    var index=0;
+    var i;
+    for(i=0;i<arr.length;i++){
+        if(arr[i]!=val){
+            temp[index]=arr[i];
+            index++;
+        }
+    }
+    while(arr.length>0){arr.pop();}
+    for(i=0;i<temp.length;i++){
+        arr.push(temp[i]);
+    }
+}
+function deleteDisplay(current) {
+    current.parentNode.style.display="none";
+    deleteArray(displayOrder,current.parentNode.id);
 }

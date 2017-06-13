@@ -24,12 +24,14 @@ public class StartupAction extends ActionSupport{
         String pw="123456";
         String itemID="iID1234567890";
         String kind="0";
+        String schoolID="sID1234567890";
         User user=(new UserHandler()).login(email,pw);
         Item item=(new ItemHandler()).getItem(itemID);
         if(user!=null){
             ActionContext actionContext=ActionContext.getContext();
             Map session=actionContext.getSession();
             session.put("userInfo",user);
+            session.put("schoolID",schoolID);
             if(item!=null)
             {
                 session.put("itemInfo",item);

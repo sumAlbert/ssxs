@@ -1,4 +1,4 @@
-html,body{padding:0;margin:0;font-size: 18px;background: #edeceb;height: 100%; width: 100%;}
+html,body{padding:0;margin:0;font-size: 18px;background: #edeceb;height: 100%; width: 100%;position: relative;}
 .main{height: 100%;width: 100%;position: relative;}
 
 @keyframes inactive
@@ -11,7 +11,9 @@ html,body{padding:0;margin:0;font-size: 18px;background: #edeceb;height: 100%; w
 	 0%   {background: #2b2d36;}
 	 100% {background: #44546a;}
 }
-
+.hidden-info{
+	display: none;
+}
 .main-content{
 	position: relative;
 	height: 100vh;
@@ -32,7 +34,83 @@ html,body{padding:0;margin:0;font-size: 18px;background: #edeceb;height: 100%; w
 	right: 0;
 	background: hsla(0,0%,50%,.5);
 	z-index: 1;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	display: none;
+}
+.wait{
+	background: white;
+	min-width: 500px;
+	min-height: 339px;
+	border-radius: 5px;
+}
+.wait-line{
+	min-height: 50px;
+	margin: 5px auto 0;
+	width: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+.wait-line:nth-child(1) > div{
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	right: 0;
+	background: url("../icon/close2.png") center right no-repeat;
+	background-size: 50% 50%;
+	cursor: pointer;
+}
+.wait-line:nth-child(2){
+	height: 40px;
+	border: 1px solid #777;
+	border-radius: 5px;
+}
+.wait-line:nth-child(3){
+	height: 150px;
+	border: 1px solid #777;
+	border-radius: 5px;
+	margin-top: 15px;
+}
+.wait-line:nth-child(4) > div{
+	cursor: pointer;
+	position: relative;
+	float: right;
+	padding: .4em .9em;
+	background: #00b0f0;
+	border-radius: .3em;
+	color: white;
+}
+.wait-line:nth-child(4) > div:hover{
+	position: relative;
+	float: right;
+	padding: .4em .9em;
+	background: #1C86EE;
+	border-radius: .3em;
+	color: white;
+}
+.wait-line > input{
+	width: 97%;
+	height: 95%;
+	font-size: 100%;
+	outline: none;
+	color: #666;
+	border: none;
+	font-weight: 200;
+	font-family: Microsoft Yahei;
+}
+.wait-line > textarea{
+	border: none;
+	width: 97%;
+	height: 95%;
+	font-size: 100%;
+	outline: none;
+	color: #666;
+	font-weight: normal;
+	font-family: Microsoft Yahei;
 }
 /*最左边的工作项目一栏的样式*/
 .work-items{
@@ -182,12 +260,23 @@ margin: 0 0 .1em 0;
 
 /*页面模板的一个个小卡片样式*/
 .page-model-content-item-card{
+	position: relative;
 	display: block;
 	background: white;
 	margin: 1em auto 0;
+}
+/*.page-model-content-item-card:hover{*/
+	/*box-shadow: 0 0 .5em .2em #5189a6;*/
+	/*cursor: pointer;*/
+
+/*}*/
+.page-model-content-item-card-temp{
+	position: relative;
+	display: block;
+	background: white;
 	padding: .01em 0 .5em 0;
 }
-.page-model-content-item-card:hover{
+.page-model-content-item-card-temp:hover{
 	box-shadow: 0 0 .5em .2em #5189a6;
 	cursor: pointer;
 
@@ -497,5 +586,22 @@ input[type="file"]{
 	bottom: 0;
 	left: 0;
 	right: 0;
+	cursor: pointer;
+}
+
+
+/*控制×的*/
+.hidden-close{
+	display: none;
+}
+.work-display-model > .page-model-content-item-card > .hidden-close{
+	display: block;
+	border: 2px dashed #ccc;
+	background: url("../icon/close3.png") center center no-repeat;
+	background-size: 50% 50%;
+	position: absolute;
+	left: 103%;
+	height:30px;
+	width: 30px;
 	cursor: pointer;
 }

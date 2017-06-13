@@ -1,6 +1,8 @@
 package entity.item.action;
 
 import entity.Item;
+import hash.HashNum;
+import net.sf.json.JSONObject;
 import sql.BaseConnection;
 
 import java.sql.Connection;
@@ -35,22 +37,33 @@ public class ItemHandler {
         return item;
     }
 
-    public boolean saveItem(String itemID,String displayIDOrder){
+    public boolean saveItem(String itemID, String displayIDOrder, JSONObject jsonObject){
         boolean result=true;
         try{
             Statement statement=connection.createStatement();
-            String sql="select count(*) from item where itemID = '"+itemID+"'";
-            String count="0";
-            ResultSet resultSet=statement.executeQuery(sql);
-            while(resultSet.next()){
-                count=resultSet.getString("count(*)");
+            String sql="";
+            if(displayIDOrder.equals("")){
+                return result;
             }
-            if(count.equals("0")){
-                sql="insert into item values ('"+itemID+"','"+displayIDOrder+"')";
+            String[] displayIDOrders=displayIDOrder.split(",");
+            HashNum hashNum=new HashNum();
+            String displayIDOrdersInsert="";
+            for(int i=0;i<displayIDOrders.length;i++){
+                String displayKindID=displayIDOrders[i];
+                String displayID="dpI"+hashNum.getHashNum(10);
+                if(i==0){
+                    displayIDOrdersInsert+=displayID;
+                }
+                else{
+                    displayIDOrdersInsert+=","+displayID;
+                }
+                JSONObject tempJDON=jsonObject.getJSONObject(displayKindID);
+                String displayTitle=tempJDON.getString("title");
+                String displayInfo=tempJDON.getString("info");
+                sql="insert into display values ('"+displayID+"','"+displayKindID+"','"+displayTitle+"','"+displayInfo+"')";
+                statement.execute(sql);
             }
-            else{
-                sql="update item set displayIDOrder = '"+displayIDOrder+"' where itemID = '"+itemID+"'";
-            }
+            sql="update item set displayIDOrder = '"+displayIDOrdersInsert+"' where itemID = '"+itemID+"'";
             statement.execute(sql);
         }
         catch (Exception exception){

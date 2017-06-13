@@ -315,7 +315,7 @@
                 <div class="show-cards-main">
                     <div class="display-year">
                         <div class="display-year-bar">
-                            <canvas id="display-year-bar" height="150px" width="200px"></canvas>
+                            <canvas id="display-year-bar" height="150px" width="300px"></canvas>
                         </div>
                     </div>
                 </div>

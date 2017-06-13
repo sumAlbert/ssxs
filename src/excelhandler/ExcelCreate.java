@@ -87,14 +87,16 @@ public class ExcelCreate {
         }
     }
     public void setTestData(int num){
-        XSSFRow xssfRow=xssfSheet.createRow(0);
         ExcelDataCreate excelDataCreate=new ExcelDataCreate();
         excelDataCreate.setSchool("华东师范大学");
-        ArrayList<String> row_db=excelDataCreate.createExcelRow(ALEC);
-        for(int i=0;i<ALEC.size();i++){
-            ExcelColumn excelColumn=ALEC.get(i);
-            XSSFCell xssfCell=xssfRow.createCell(i);
-            xssfCell.setCellValue(row_db.get(i));
+        excelDataCreate.setBirthYearStandard(1998);
+        for(int j=1;j<=num;j++) {
+            XSSFRow xssfRow=xssfSheet.createRow(j);
+            ArrayList<String> row_db = excelDataCreate.createExcelRow(ALEC);
+            for (int i = 0; i < ALEC.size(); i++) {
+                XSSFCell xssfCell = xssfRow.createCell(i);
+                xssfCell.setCellValue(row_db.get(i));
+            }
         }
         System.out.println("123");
     }

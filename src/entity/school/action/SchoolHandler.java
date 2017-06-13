@@ -1,5 +1,6 @@
 package entity.school.action;
 
+import entity.School;
 import sql.BaseConnection;
 
 import java.sql.Connection;
@@ -16,11 +17,13 @@ public class SchoolHandler {
     private String schoolID;
     private String itemID;
     private Connection connection;
+    private School school;
 
     public SchoolHandler(){
         super();
         connection=new BaseConnection("ssxs").getConnection();
     }
+
 
     public void setItemID(String itemID){
         this.itemID=itemID;
@@ -36,6 +39,9 @@ public class SchoolHandler {
     }
     public void setSchoolID(String schoolID){
         this.schoolID=schoolID;
+    }
+    public void setSchool(School school){
+        this.school=school;
     }
 
     public String getSchoolName(){
@@ -53,13 +59,15 @@ public class SchoolHandler {
     public String getItemID(){
         return this.itemID;
     }
+    public School getSchool(){
+        return this.school;
+    }
 
     public void insert(){
         try{
             Statement statement=connection.createStatement();
-            String sql="delete from school where schoolID = '"+schoolID+"'";
-            statement.execute(sql);
-            sql="insert into school values ('"+schoolID+"','"+schoolName+"','"+schoolKind+"','"+schoolProvince+"','"+itemID+"')";
+            String sql="update school set schoolName = '"+schoolName+"', schoolLocation= '"+schoolProvince+"',schoolKind = '"+schoolKind+"' where schoolID = '"+schoolID+"'";
+            System.out.println(sql);
             statement.execute(sql);
         }
         catch (Exception exception){
