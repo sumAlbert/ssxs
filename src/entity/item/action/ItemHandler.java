@@ -28,6 +28,7 @@ public class ItemHandler {
             ResultSet resultSet=statement.executeQuery(sql);
             while(resultSet.next()){
                 item.setItemID(resultSet.getString("itemID"));
+                item.setDisplayOrderStr(resultSet.getString("displayIDOrder"));
                 break;
             }
         }

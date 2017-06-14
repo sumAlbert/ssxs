@@ -66,8 +66,28 @@
                         %>
                     </div>
                 </div>
-                <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
-                <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
+                    <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                    }else{
+                %>
+                    <div class="show-cards-title">新生最热姓氏</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
+                    <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                    }else{
+                %>
+                    <div class="show-cards-info">学校最多的姓氏是：
+                        <%=name.get(0)%>、<%=name.get(1)%>、<%=name.get(2)%>、<%=name.get(3)%>、<%=name.get(4)%>
+                    </div>
+                <%
+                    }
+                %>
             </div>
             <%
                         break;

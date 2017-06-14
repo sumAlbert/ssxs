@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Item {
     private String itemID;
     private ArrayList<Integer> displayIDOrder;
+    private String displayOrderStr;
 
     public Item(){
         super();
@@ -24,11 +25,17 @@ public class Item {
     public void setDisplayIDOrder(ArrayList<Integer> displayIDOrder){
         this.displayIDOrder=displayIDOrder;
     }
+    public void setDisplayOrderStr(String displayOrderStr){
+        this.displayOrderStr=displayOrderStr;
+    }
 
     public String getItemID(){
         return this.itemID;
     }
     public ArrayList<Integer> getDisplayIDOrder(){
         return this.displayIDOrder;
+    }
+    public String getDisplayOrderStr(){
+        return this.displayOrderStr;
     }
 }

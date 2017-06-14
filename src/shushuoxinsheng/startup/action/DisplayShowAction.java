@@ -1,5 +1,7 @@
 package shushuoxinsheng.startup.action;
 
+import com.opensymphony.xwork2.ActionContext;
+import entity.Item;
 import entity.analyse.Analyse;
 import entity.analyse.AnalyseHandler;
 import entity.display.Display;
@@ -9,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
 
@@ -20,8 +23,11 @@ public class DisplayShowAction {
     private List<Analyse> analyseList=new ArrayList<>();
     public String execute() throws Exception {
         // TODO Auto-generated method stub
-        String itemID="iID1234567890";
-        String displayIDOrder="dpI1234567890,dpI1234567891,dpI1234567892,dpI1234567893,dpI1234567894,dpI1234567895,dpI1234567896,dpI1234567897,dpI1234567898,dpI1234567899";
+        ActionContext ac=ActionContext.getContext();
+        Map session=ac.getSession();
+        String itemID=((Item)session.get("itemInfo")).getItemID();
+        String displayIDOrder=((Item)session.get("itemInfo")).getDisplayOrderStr();
+//        String displayIDOrder="dpI1234567890,dpI1234567891,dpI1234567892,dpI1234567893,dpI1234567894,dpI1234567895,dpI1234567896,dpI1234567897,dpI1234567898,dpI1234567899";
         String[] displayIDOrders=displayIDOrder.split(",");
         DisplayHandler displayHandler=new DisplayHandler();
         AnalyseHandler analyseHandler=new AnalyseHandler();
