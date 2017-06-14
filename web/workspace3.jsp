@@ -67,8 +67,8 @@
                     <div class="table-count"><s:property value="majorCountTotal"></s:property></div>
                 </div>
             </div>
-            <div class="table-button-control">控制台</div>
-            <div class="table-button">返回</div>
+            <div class="table-button-control" id="table-button-display">展示</div>
+            <div class="table-button" id="table-button-back">返回</div>
         </div>
     </div>
     <div class="workspace">

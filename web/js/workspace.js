@@ -254,6 +254,10 @@ $(document).ready(function(){
 			}
 			$(this).clone().appendTo(".work-display-model");
 		});
+		/*跳转到展示界面*/
+		$(".button").eq(1).click(function(){
+			window.open("displayShowAction");
+		});
 		/*保存displayIDorder*/
 		$(".button").eq(2).click(function(){
 			var schoolName=$("#input-school-name").val();

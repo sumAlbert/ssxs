@@ -273,7 +273,7 @@
                     </div>
                     <div class="button">
                         <div class="button-img"></div>
-                        <div class="button-label">重做</div>
+                        <div class="button-label">展示</div>
                     </div>
                     <div class="button">
                         <div class="button-img"></div>

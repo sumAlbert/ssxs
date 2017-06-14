@@ -71,6 +71,12 @@ $(document).ready(function(){
             window.location.href=("datableAction.action?request_key="+request_key+"&request_value="+request_value);
         }
     });
+    $("#table-button-back").click(function(){
+        window.location.href="index.action";
+    });
+    $("#table-button-display").click(function(){
+        window.open("displayShowAction");
+    })
     function getJsonTemps(arr,kind){
         var result="{\"student\":[";
         while(jsonTemps.length>0){jsonTemps.pop();}

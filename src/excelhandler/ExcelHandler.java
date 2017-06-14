@@ -154,7 +154,7 @@ public class ExcelHandler {
             }
         }
         /*导入数据库*/
-        insertSchInfo2db("sID"+schoolId,itemID);
+//        insertSchInfo2db("sID"+schoolId,itemID);
         insertStudents2db(students);
     }
 
