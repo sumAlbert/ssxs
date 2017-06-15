@@ -254,6 +254,10 @@ $(document).ready(function(){
 			}
 			$(this).clone().appendTo(".work-display-model");
 		});
+		/*跳转到数据界面*/
+		$(".button").eq(0).click(function(){
+			window.open("datableAction.action");
+		});
 		/*跳转到展示界面*/
 		$(".button").eq(1).click(function(){
 			window.open("displayShowAction");

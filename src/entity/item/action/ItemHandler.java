@@ -1,5 +1,6 @@
 package entity.item.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import entity.Item;
 import hash.HashNum;
 import net.sf.json.JSONObject;
@@ -8,6 +9,7 @@ import sql.BaseConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Map;
 
 /**
  * Created by dell2 on 2017/6/6.
@@ -41,6 +43,8 @@ public class ItemHandler {
     public boolean saveItem(String itemID, String displayIDOrder, JSONObject jsonObject){
         boolean result=true;
         try{
+            ActionContext ac=ActionContext.getContext();
+            Map session=ac.getSession();
             Statement statement=connection.createStatement();
             String sql="";
             if(displayIDOrder.equals("")){
@@ -66,6 +70,8 @@ public class ItemHandler {
             }
             sql="update item set displayIDOrder = '"+displayIDOrdersInsert+"' where itemID = '"+itemID+"'";
             statement.execute(sql);
+            Item item=(Item)session.get("itemInfo");
+            item.setDisplayOrderStr(displayIDOrdersInsert);
         }
         catch (Exception exception){
             exception.printStackTrace();

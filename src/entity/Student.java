@@ -50,9 +50,10 @@ public class Student {
     public Student(){
         super();
     }
+
     public Student(Map<String,String> initMap){
         HashNum hashNum=new HashNum();
-        stuID="stu"+hashNum.getHashNum(10);
+        stuID="stu"+hashNum.getStudentIDHashNum(12);
         this.initMap=initMap;
         Iterator iterator=initMap.entrySet().iterator();
         while(iterator.hasNext()){

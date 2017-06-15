@@ -231,7 +231,6 @@ public class StudentHandler {
                         sql_temp+=","+key+"='"+value+"'";
                 }
                 sql="update student set "+sql_temp+" where stuID = '"+student.getStuID()+"'";
-                System.out.println(sql);
                 statement.execute(sql);
 
             }

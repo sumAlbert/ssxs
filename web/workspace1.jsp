@@ -249,7 +249,7 @@
                     <div class="update-label update-label-inactive">已上传</div>
                 </div>
                 <form class="update-content update-wait" method="POST" enctype="multipart/form-data" id="excel_table" action="excelReceive.action">
-                    <div class="update-content-info">华师大15级各专业</br>最多出生月份
+                    <div class="update-content-info">数据上传
                     </div>
                     <div class="update-buttons">
                         <div class="update-button" id="downloadExcel">下载表格</div>
@@ -269,7 +269,7 @@
                 <div class="button-list">
                     <div class="button">
                         <div class="button-img"></div>
-                        <div class="button-label">撤销</div>
+                        <div class="button-label">数据</div>
                     </div>
                     <div class="button">
                         <div class="button-img"></div>

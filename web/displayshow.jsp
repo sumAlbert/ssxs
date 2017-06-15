@@ -82,8 +82,8 @@
                 <%
                     }else{
                 %>
-                    <div class="show-cards-info">学校最多的姓氏是：
-                        <%=name.get(0)%>、<%=name.get(1)%>、<%=name.get(2)%>、<%=name.get(3)%>、<%=name.get(4)%>
+                    <div class="show-cards-info">亲爱的你知道吗？新生的五大最热门姓氏按顺序分别为：
+                        <%=name.get(0)%>（<%=count.get(0)%>人）、<%=name.get(1)%>（<%=count.get(1)%>人）、<%=name.get(2)%>（<%=count.get(2)%>人）、<%=name.get(3)%>（<%=count.get(3)%>人）、<%=name.get(4)%>（<%=count.get(4)%>人）
                     </div>
                 <%
                     }
@@ -104,8 +104,28 @@
                         <p><%=count.get(0)%></p>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">新生最多重名</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info">亲爱的你知道吗？新生的中有很多重名的人，重复最多的姓名按顺序分别为：
+                    <%=name.get(0)%>（<%=count.get(0)%>人）、<%=name.get(1)%>（<%=count.get(1)%>人）、<%=name.get(2)%>（<%=count.get(2)%>人）、<%=name.get(3)%>（<%=count.get(3)%>人）、<%=name.get(4)%>（<%=count.get(4)%>人）
+                </div>
+                <%
+                    }
+                %>
             </div>
             <%
                         break;
@@ -122,8 +142,28 @@
                         <p><%=count.get(0)%></p>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">新生最多政治面貌</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info">亲爱的你知道吗？政治面貌分为3种：群众、共青团员和预备党员。按照人数排列顺序分别为：
+                    <%=name.get(0)%>（<%=count.get(0)%>人）、<%=name.get(1)%>（<%=count.get(1)%>人）、<%=name.get(2)%>（<%=count.get(2)%>人）
+                </div>
+                <%
+                    }
+                %>
             </div>
             <%
                         break;
@@ -146,8 +186,31 @@
                         %>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">新生星座的点点滴滴</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info">亲爱的你知道吗？星座有12种，找找你的星座吧~ 按照人数排列顺序分别为：
+                    <%=name.get(0)%>（<%=count.get(0)%>人）、<%=name.get(1)%>（<%=count.get(1)%>人）、<%=name.get(2)%>（<%=count.get(2)%>人）、
+                    <%=name.get(3)%>（<%=count.get(3)%>人）、<%=name.get(4)%>（<%=count.get(4)%>人）、<%=name.get(5)%>（<%=count.get(5)%>人）、
+                    <%=name.get(6)%>（<%=count.get(6)%>人）、<%=name.get(7)%>（<%=count.get(7)%>人）、<%=name.get(8)%>（<%=count.get(8)%>人）、
+                    <%=name.get(9)%>（<%=count.get(9)%>人）、<%=name.get(10)%>（<%=count.get(10)%>人）、<%=name.get(11)%>（<%=count.get(11)%>人）
+                </div>
+                <%
+                    }
+                %>
             </div>
             <%
                     break;
@@ -169,8 +232,29 @@
                         %>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">新生血型</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info">亲爱的你知道吗？血型有4种，找找你的血型吧~ 按照人数排列顺序分别为：
+                    <%=name.get(0)%>（<%=count.get(0)%>人）、<%=name.get(1)%>（<%=count.get(1)%>人）、<%=name.get(2)%>（<%=count.get(2)%>人）、
+                    <%=name.get(3)%>（<%=count.get(3)%>人）
+                </div>
+                <%
+                    }
+                %>
             </div>
             <%
                     break;
@@ -199,8 +283,28 @@
                         %>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">新生邮箱分布</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info">亲爱的你知道吗？对于邮箱，每个人心中都有自己喜欢的邮箱~ 按照人数排列顺序分别为：
+                    <%=name.get(0)%>（<%=count.get(0)%>人）、<%=name.get(1)%>（<%=count.get(1)%>人）、<%=name.get(2)%>（<%=count.get(2)%>人）、
+                </div>
+                <%
+                    }
+                %>
             </div>
             <%
                     break;
@@ -262,8 +366,47 @@
                         %>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">新生性别分布</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info">亲爱的你知道吗？我们学校的男女比例是很神奇的，来看看吧。希望你能找到心仪的Ta。 按照人数排列顺序分别为：
+                    <%
+                        if(name.get(0).equals("1")){
+                    %>
+                        男生（<%=count.get(0)%>人）、
+                    <%
+                        }else{
+                    %>
+                        女生（<%=count.get(0)%>人）、
+                    <%
+                        }
+                        if(name.get(1).equals("1")){
+                    %>
+                        男生（<%=count.get(1)%>人）
+                    <%
+                        }else{
+                    %>
+                        女生（<%=count.get(1)%>人）
+                    <%
+                        }
+                    %>
+                </div>
+                <%
+                    }
+                %>
             </div>
             <%
                     break;
@@ -286,8 +429,29 @@
                         %>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">新生专业类别分布</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info">亲爱的你知道吗？我们这次把专业分为四类，来看看吧。希望你进入了你喜欢的专业。 按照人数排列顺序分别为：
+                    <%=name.get(0)%>（<%=count.get(0)%>人）、<%=name.get(1)%>（<%=count.get(1)%>人）、
+                    <%=name.get(2)%>（<%=count.get(2)%>人）、<%=name.get(3)%>（<%=count.get(3)%>人）
+                </div>
+                <%
+                    }
+                %>
             </div>
             <%
                     break;
@@ -318,8 +482,26 @@
                         </div>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">独生子女比例</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info"></div>
+                <%
+                    }
+                %>
             </div>
             <%
                     break;
@@ -339,8 +521,40 @@
                         </div>
                     </div>
                 </div>
+                <%
+                    if(!display.getDisplayTitle().equals("")){
+                %>
                 <div class="show-cards-title"><%=display.getDisplayTitle()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-title">新生出生年份分布</div>
+                <%
+                    }
+                    if(!display.getDisplayInfo().equals("")){
+                %>
                 <div class="show-cards-info"><%=display.getDisplayInfo()%></div>
+                <%
+                }else{
+                %>
+                <div class="show-cards-info">亲爱的你知道吗？虽然都是同一届进来的，也不一定是同岁的哟。希望你进入了你喜欢的专业。 按照人数排列顺序分别为：
+                    <%
+                        for(int j=0;j<name.size();j++){
+                            if(j!=0){
+                    %>
+                        <%=name.get(j)%>（<%=count.get(j)%>人）、
+                    <%
+                            }else{
+                    %>
+                        <%=name.get(j)%>（<%=count.get(j)%>人）
+                    <%
+                            }
+                        }
+                    %>
+                </div>
+                <%
+                    }
+                %>
             </div>
             <%
                 }
